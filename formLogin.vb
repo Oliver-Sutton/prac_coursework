@@ -13,17 +13,10 @@ Public Class formLogin
         Dim password As String = txtPassword.Text
 
         Dim loginUrl As String = Application.StartupPath + "/files/login.txt"
-        Dim fileStream As FileStream = New FileStream(loginUrl, FileMode.Open, FileAccess.Read)
-        Dim streamReader As StreamReader = New StreamReader(fileStream)
 
-        Dim tempUsers As String = ""
-        Dim users() As String
+        Dim tempUsers As String = fileHandler.readFile(loginUrl)
 
-        Do Until streamReader.Peek() = -1
-            tempUsers += streamReader.ReadLine()
-        Loop
-
-        users = tempUsers.Split("#")
+        Dim users = tempUsers.Split("#")
 
         '' file format Firstname, Lastname, username, password, isAdmin (bool)
 
@@ -49,6 +42,5 @@ Public Class formLogin
 
         labelPositions.center(lblUserFeedback, panelLogin)
 
-        fileStream.Close()
     End Sub
 End Class

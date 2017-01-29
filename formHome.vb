@@ -18,4 +18,9 @@
         formCreateAccount.Show()
         Me.Close()
     End Sub
+
+    Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
+        formChangePassword.show()
+        Me.Close()
+    End Sub
 End Class

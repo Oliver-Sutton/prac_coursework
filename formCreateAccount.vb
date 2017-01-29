@@ -55,19 +55,8 @@ Public Class formCreateAccount
     Private Function isUnique(username As String) As Boolean
 
         Dim loginUrl As String = Application.StartupPath + "/files/login.txt"
-        Dim fileStream As FileStream = New FileStream(loginUrl, FileMode.Open, FileAccess.Read)
-        Dim fileReader As StreamReader = New StreamReader(fileStream)
-
-        Dim tempUsers As String = ""
-        Dim users() As String
-
-        Do Until fileReader.Peek() = -1
-            tempUsers += fileReader.ReadLine()
-        Loop
-
-        fileStream.Close()
-
-        users = tempUsers.Split("#")
+        Dim tempUsers As String = fileHandler.readFile(loginUrl)
+        Dim users = tempUsers.Split("#")
 
         If users(users.Length - 1) = "" Then
             Array.Resize(users, users.Length - 1)

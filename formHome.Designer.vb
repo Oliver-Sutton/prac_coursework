@@ -23,13 +23,14 @@ Partial Class formHome
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panelUser = New System.Windows.Forms.Panel()
-        Me.panelAdmin = New System.Windows.Forms.Panel()
-        Me.lblAdminPanel = New System.Windows.Forms.Label()
         Me.lblUserPanel = New System.Windows.Forms.Label()
-        Me.panelUserSettings = New System.Windows.Forms.Panel()
-        Me.lblUserSettings = New System.Windows.Forms.Label()
-        Me.btnLogOut = New System.Windows.Forms.Button()
+        Me.panelAdmin = New System.Windows.Forms.Panel()
         Me.btnCreateAccount = New System.Windows.Forms.Button()
+        Me.lblAdminPanel = New System.Windows.Forms.Label()
+        Me.panelUserSettings = New System.Windows.Forms.Panel()
+        Me.btnLogOut = New System.Windows.Forms.Button()
+        Me.lblUserSettings = New System.Windows.Forms.Label()
+        Me.btnChangePassword = New System.Windows.Forms.Button()
         Me.panelUser.SuspendLayout()
         Me.panelAdmin.SuspendLayout()
         Me.panelUserSettings.SuspendLayout()
@@ -44,6 +45,15 @@ Partial Class formHome
         Me.panelUser.Size = New System.Drawing.Size(270, 183)
         Me.panelUser.TabIndex = 0
         '
+        'lblUserPanel
+        '
+        Me.lblUserPanel.AutoSize = True
+        Me.lblUserPanel.Location = New System.Drawing.Point(104, 3)
+        Me.lblUserPanel.Name = "lblUserPanel"
+        Me.lblUserPanel.Size = New System.Drawing.Size(59, 13)
+        Me.lblUserPanel.TabIndex = 0
+        Me.lblUserPanel.Text = "User Panel"
+        '
         'panelAdmin
         '
         Me.panelAdmin.BackColor = System.Drawing.SystemColors.ControlDark
@@ -55,6 +65,15 @@ Partial Class formHome
         Me.panelAdmin.TabIndex = 1
         Me.panelAdmin.Visible = False
         '
+        'btnCreateAccount
+        '
+        Me.btnCreateAccount.Location = New System.Drawing.Point(3, 19)
+        Me.btnCreateAccount.Name = "btnCreateAccount"
+        Me.btnCreateAccount.Size = New System.Drawing.Size(194, 23)
+        Me.btnCreateAccount.TabIndex = 1
+        Me.btnCreateAccount.Text = "Create New Account"
+        Me.btnCreateAccount.UseVisualStyleBackColor = True
+        '
         'lblAdminPanel
         '
         Me.lblAdminPanel.AutoSize = True
@@ -64,33 +83,16 @@ Partial Class formHome
         Me.lblAdminPanel.TabIndex = 0
         Me.lblAdminPanel.Text = "Admin Panel"
         '
-        'lblUserPanel
-        '
-        Me.lblUserPanel.AutoSize = True
-        Me.lblUserPanel.Location = New System.Drawing.Point(104, 3)
-        Me.lblUserPanel.Name = "lblUserPanel"
-        Me.lblUserPanel.Size = New System.Drawing.Size(59, 13)
-        Me.lblUserPanel.TabIndex = 0
-        Me.lblUserPanel.Text = "User Panel"
-        '
         'panelUserSettings
         '
         Me.panelUserSettings.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelUserSettings.Controls.Add(Me.btnChangePassword)
         Me.panelUserSettings.Controls.Add(Me.btnLogOut)
         Me.panelUserSettings.Controls.Add(Me.lblUserSettings)
         Me.panelUserSettings.Location = New System.Drawing.Point(12, 398)
         Me.panelUserSettings.Name = "panelUserSettings"
         Me.panelUserSettings.Size = New System.Drawing.Size(200, 100)
         Me.panelUserSettings.TabIndex = 2
-        '
-        'lblUserSettings
-        '
-        Me.lblUserSettings.AutoSize = True
-        Me.lblUserSettings.Location = New System.Drawing.Point(60, 3)
-        Me.lblUserSettings.Name = "lblUserSettings"
-        Me.lblUserSettings.Size = New System.Drawing.Size(70, 13)
-        Me.lblUserSettings.TabIndex = 0
-        Me.lblUserSettings.Text = "User Settings"
         '
         'btnLogOut
         '
@@ -101,14 +103,23 @@ Partial Class formHome
         Me.btnLogOut.Text = "Log Out"
         Me.btnLogOut.UseVisualStyleBackColor = True
         '
-        'btnCreateAccount
+        'lblUserSettings
         '
-        Me.btnCreateAccount.Location = New System.Drawing.Point(3, 19)
-        Me.btnCreateAccount.Name = "btnCreateAccount"
-        Me.btnCreateAccount.Size = New System.Drawing.Size(194, 23)
-        Me.btnCreateAccount.TabIndex = 1
-        Me.btnCreateAccount.Text = "Create New Account"
-        Me.btnCreateAccount.UseVisualStyleBackColor = True
+        Me.lblUserSettings.AutoSize = True
+        Me.lblUserSettings.Location = New System.Drawing.Point(60, 3)
+        Me.lblUserSettings.Name = "lblUserSettings"
+        Me.lblUserSettings.Size = New System.Drawing.Size(70, 13)
+        Me.lblUserSettings.TabIndex = 0
+        Me.lblUserSettings.Text = "User Settings"
+        '
+        'btnChangePassword
+        '
+        Me.btnChangePassword.Location = New System.Drawing.Point(3, 48)
+        Me.btnChangePassword.Name = "btnChangePassword"
+        Me.btnChangePassword.Size = New System.Drawing.Size(194, 23)
+        Me.btnChangePassword.TabIndex = 2
+        Me.btnChangePassword.Text = "Change Password"
+        Me.btnChangePassword.UseVisualStyleBackColor = True
         '
         'formHome
         '
@@ -142,4 +153,5 @@ Partial Class formHome
     Friend WithEvents lblUserSettings As Label
     Friend WithEvents btnLogOut As Button
     Friend WithEvents btnCreateAccount As Button
+    Friend WithEvents btnChangePassword As Button
 End Class
