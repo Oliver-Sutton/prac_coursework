@@ -18,9 +18,10 @@ Public Class formLogin
 
         Dim users = tempUsers.Split("#")
 
+        Array.Resize(users, users.Length - 1)
         '' file format Firstname, Lastname, username, password, isAdmin (bool)
 
-        For i = 0 To users.Length
+        For i = 0 To users.Length - 1
             Dim userInfo() As String
             userInfo = users(i).Split(",")
             If username = userInfo(2) And password = userInfo(3) Then
