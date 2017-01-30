@@ -20,7 +20,12 @@
     End Sub
 
     Private Sub btnChangePassword_Click(sender As Object, e As EventArgs) Handles btnChangePassword.Click
-        formChangePassword.show()
+        formChangePassword.Show()
         Me.Close()
+    End Sub
+
+    Private Sub btnBackupLogins_Click(sender As System.Object, e As System.EventArgs) Handles btnBackupLogins.Click
+        Dim loginUrl = Application.StartupPath + "/files/login.txt"
+        fileHandler.backupFile(loginUrl)
     End Sub
 End Class

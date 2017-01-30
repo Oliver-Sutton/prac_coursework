@@ -28,9 +28,10 @@ Partial Class formHome
         Me.btnCreateAccount = New System.Windows.Forms.Button()
         Me.lblAdminPanel = New System.Windows.Forms.Label()
         Me.panelUserSettings = New System.Windows.Forms.Panel()
+        Me.btnChangePassword = New System.Windows.Forms.Button()
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.lblUserSettings = New System.Windows.Forms.Label()
-        Me.btnChangePassword = New System.Windows.Forms.Button()
+        Me.btnBackupLogins = New System.Windows.Forms.Button()
         Me.panelUser.SuspendLayout()
         Me.panelAdmin.SuspendLayout()
         Me.panelUserSettings.SuspendLayout()
@@ -57,6 +58,7 @@ Partial Class formHome
         'panelAdmin
         '
         Me.panelAdmin.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelAdmin.Controls.Add(Me.btnBackupLogins)
         Me.panelAdmin.Controls.Add(Me.btnCreateAccount)
         Me.panelAdmin.Controls.Add(Me.lblAdminPanel)
         Me.panelAdmin.Location = New System.Drawing.Point(288, 15)
@@ -94,6 +96,15 @@ Partial Class formHome
         Me.panelUserSettings.Size = New System.Drawing.Size(200, 100)
         Me.panelUserSettings.TabIndex = 2
         '
+        'btnChangePassword
+        '
+        Me.btnChangePassword.Location = New System.Drawing.Point(3, 48)
+        Me.btnChangePassword.Name = "btnChangePassword"
+        Me.btnChangePassword.Size = New System.Drawing.Size(194, 23)
+        Me.btnChangePassword.TabIndex = 2
+        Me.btnChangePassword.Text = "Change Password"
+        Me.btnChangePassword.UseVisualStyleBackColor = True
+        '
         'btnLogOut
         '
         Me.btnLogOut.Location = New System.Drawing.Point(3, 19)
@@ -112,14 +123,14 @@ Partial Class formHome
         Me.lblUserSettings.TabIndex = 0
         Me.lblUserSettings.Text = "User Settings"
         '
-        'btnChangePassword
+        'btnBackupLogins
         '
-        Me.btnChangePassword.Location = New System.Drawing.Point(3, 48)
-        Me.btnChangePassword.Name = "btnChangePassword"
-        Me.btnChangePassword.Size = New System.Drawing.Size(194, 23)
-        Me.btnChangePassword.TabIndex = 2
-        Me.btnChangePassword.Text = "Change Password"
-        Me.btnChangePassword.UseVisualStyleBackColor = True
+        Me.btnBackupLogins.Location = New System.Drawing.Point(3, 48)
+        Me.btnBackupLogins.Name = "btnBackupLogins"
+        Me.btnBackupLogins.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupLogins.TabIndex = 2
+        Me.btnBackupLogins.Text = "Backup Logins"
+        Me.btnBackupLogins.UseVisualStyleBackColor = True
         '
         'formHome
         '
@@ -154,4 +165,5 @@ Partial Class formHome
     Friend WithEvents btnLogOut As Button
     Friend WithEvents btnCreateAccount As Button
     Friend WithEvents btnChangePassword As Button
+    Friend WithEvents btnBackupLogins As System.Windows.Forms.Button
 End Class

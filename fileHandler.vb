@@ -44,7 +44,7 @@ Module fileHandler
 
     End Function
 
-    Public Sub changeUser(fileUrl As String, user As String, edit As String, arrayVal As Integer)
+    Public Sub changeUser(fileUrl As String, current As String, username As String, edit As String, arrayVal As Integer)
 
         Dim fileSteamRead As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
         Dim streamReader As StreamReader = New StreamReader(fileSteamRead)
@@ -56,6 +56,7 @@ Module fileHandler
             tempUsers += streamReader.ReadLine()
         Loop
 
+        fileSteamRead.Flush()
         streamReader.Close()
         fileSteamRead.Close()
 
@@ -67,15 +68,14 @@ Module fileHandler
 
         For i = 0 To users.Length - 1
             Dim usersSplit() As String = users(i).Split(",")
-            If usersSplit(3) <> user Then
-                newUsersTemp += user(i) & "#"
-            ElseIf usersSplit(3) = user Then
-                changedUser = user(i)
+            If usersSplit(arrayVal) <> current Or usersSplit(2) <> username Then
+                newUsersTemp += users(i) & "#"
+            ElseIf usersSplit(arrayVal) = current And usersSplit(2) = username Then
+                changedUser = users(i)
             End If
         Next
 
         Dim changedUserArray() As String = changedUser.Split(",")
-
         Dim newChangedUser As String = ""
 
         For i = 0 To changedUserArray.Length - 1
@@ -87,17 +87,56 @@ Module fileHandler
         Next
 
         newChangedUser = newChangedUser.Substring(0, newChangedUser.Length - 1)
-        Dim fileStreamWrite As FileStream = New FileStream(fileUrl, FileMode.Append, FileAccess.Write)
+        Dim fileStreamWrite As FileStream = New FileStream(fileUrl, FileMode.Truncate, FileAccess.Write)
         Dim writerStream As StreamWriter = New StreamWriter(fileStreamWrite)
 
         Dim newUsers() As String = newUsersTemp.Split("#")
+        Array.Resize(newUsers, newUsers.Length - 1)
 
-        For i = 0 To newUsers.Length
+        For i = 0 To newUsers.Length - 1
             writerStream.WriteLine(newUsers(i) & "#")
         Next
         writerStream.WriteLine(newChangedUser & "#")
 
+        fileStreamWrite.Flush()
+        writerStream.Close()
         fileStreamWrite.Close()
+
+    End Sub
+
+    Public Sub backupFile(fileUrl As String)
+        Dim fileUrlSplit() As String = fileUrl.Split(".")
+        Dim strDate As String = Date.Today
+        Dim dateSplit() As String = strDate.Split("/")
+        Dim backupfileUrl As String = fileUrlSplit(0) & "_" & dateSplit(0) & "_" & dateSplit(1) & "_" & dateSplit(2) & ".txt"
+
+
+        Dim fileStreamMain As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
+        Dim readerStream As StreamReader = New StreamReader(fileStreamMain)
+
+        Dim backupString As String = ""
+
+        Do
+            backupString += readerStream.ReadLine()
+        Loop Until readerStream.Peek = -1
+
+        fileStreamMain.Flush()
+        readerStream.Close()
+        fileStreamMain.Close()
+
+        Dim backupItems() As String = backupString.Split("#")
+        Array.Resize(backupItems, backupItems.Length - 1)
+
+        Dim fileStreamBackup As FileStream = New FileStream(backupfileUrl, FileMode.Append, FileAccess.Write)
+        Dim writerStreamBackup As StreamWriter = New StreamWriter(fileStreamBackup)
+
+        For i = 0 To backupItems.Length - 1
+            writerStreamBackup.WriteLine(backupItems(i) & "#")
+        Next
+
+        fileStreamBackup.Flush()
+        writerStreamBackup.Close()
+        fileStreamBackup.Close()
 
     End Sub
 End Module
