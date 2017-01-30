@@ -10,6 +10,8 @@ Module fileHandler
             fileString += streamReader.ReadLine
         Loop
 
+        fileStream.Flush()
+        streamReader.Close()
         fileStream.Close()
 
         Return fileString
@@ -42,6 +44,29 @@ Module fileHandler
 
         Return userString
 
+    End Function
+
+    ''' <summary>
+    '''     This function checks if the search value is unique to the file url your parse, arrayVal is the postion the unique item is in from 0
+    ''' </summary>
+    ''' <param name="search"></param>
+    ''' <returns>If username is unique returns true else false</returns>
+    Public Function isUnique(search As String, fileUrl As String, arrayVal As Integer) As Boolean
+
+        Dim tempItems As String = readFile(fileUrl)
+        Dim items = tempItems.Split("#")
+
+        If items(items.Length - 1) = "" Then
+            Array.Resize(items, items.Length - 1)
+        End If
+
+        For i = 0 To items.Length - 1
+            Dim itemSplit = items(i).Split(",")
+            If search = itemSplit(arrayVal) Then
+                Return False
+            End If
+        Next
+        Return True
     End Function
 
     Public Sub changeUser(fileUrl As String, current As String, username As String, edit As String, arrayVal As Integer)
@@ -127,7 +152,7 @@ Module fileHandler
         Dim backupItems() As String = backupString.Split("#")
         Array.Resize(backupItems, backupItems.Length - 1)
 
-        Dim fileStreamBackup As FileStream = New FileStream(backupfileUrl, FileMode.Append, FileAccess.Write)
+        Dim fileStreamBackup As FileStream = New FileStream(backupfileUrl, FileMode.Truncate, FileAccess.Write)
         Dim writerStreamBackup As StreamWriter = New StreamWriter(fileStreamBackup)
 
         For i = 0 To backupItems.Length - 1

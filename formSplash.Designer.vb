@@ -49,7 +49,7 @@ Partial Class formSplash
         'tmrSplash
         '
         Me.tmrSplash.Enabled = True
-        Me.tmrSplash.Interval = 2000
+        Me.tmrSplash.Interval = 500
         '
         'formSplash
         '

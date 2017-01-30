@@ -28,4 +28,9 @@
         Dim loginUrl = Application.StartupPath + "/files/login.txt"
         fileHandler.backupFile(loginUrl)
     End Sub
+
+    Private Sub btnCreateOrder_Click(sender As Object, e As EventArgs) Handles btnCreateOrder.Click
+        formCreateOrder.show()
+        Me.Close()
+    End Sub
 End Class

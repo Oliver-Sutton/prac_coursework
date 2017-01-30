@@ -25,13 +25,14 @@ Partial Class formHome
         Me.panelUser = New System.Windows.Forms.Panel()
         Me.lblUserPanel = New System.Windows.Forms.Label()
         Me.panelAdmin = New System.Windows.Forms.Panel()
+        Me.btnBackupLogins = New System.Windows.Forms.Button()
         Me.btnCreateAccount = New System.Windows.Forms.Button()
         Me.lblAdminPanel = New System.Windows.Forms.Label()
         Me.panelUserSettings = New System.Windows.Forms.Panel()
         Me.btnChangePassword = New System.Windows.Forms.Button()
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.lblUserSettings = New System.Windows.Forms.Label()
-        Me.btnBackupLogins = New System.Windows.Forms.Button()
+        Me.btnCreateOrder = New System.Windows.Forms.Button()
         Me.panelUser.SuspendLayout()
         Me.panelAdmin.SuspendLayout()
         Me.panelUserSettings.SuspendLayout()
@@ -40,6 +41,7 @@ Partial Class formHome
         'panelUser
         '
         Me.panelUser.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelUser.Controls.Add(Me.btnCreateOrder)
         Me.panelUser.Controls.Add(Me.lblUserPanel)
         Me.panelUser.Location = New System.Drawing.Point(12, 15)
         Me.panelUser.Name = "panelUser"
@@ -66,6 +68,15 @@ Partial Class formHome
         Me.panelAdmin.Size = New System.Drawing.Size(200, 100)
         Me.panelAdmin.TabIndex = 1
         Me.panelAdmin.Visible = False
+        '
+        'btnBackupLogins
+        '
+        Me.btnBackupLogins.Location = New System.Drawing.Point(3, 48)
+        Me.btnBackupLogins.Name = "btnBackupLogins"
+        Me.btnBackupLogins.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupLogins.TabIndex = 2
+        Me.btnBackupLogins.Text = "Backup Logins"
+        Me.btnBackupLogins.UseVisualStyleBackColor = True
         '
         'btnCreateAccount
         '
@@ -123,14 +134,14 @@ Partial Class formHome
         Me.lblUserSettings.TabIndex = 0
         Me.lblUserSettings.Text = "User Settings"
         '
-        'btnBackupLogins
+        'btnCreateOrder
         '
-        Me.btnBackupLogins.Location = New System.Drawing.Point(3, 48)
-        Me.btnBackupLogins.Name = "btnBackupLogins"
-        Me.btnBackupLogins.Size = New System.Drawing.Size(194, 23)
-        Me.btnBackupLogins.TabIndex = 2
-        Me.btnBackupLogins.Text = "Backup Logins"
-        Me.btnBackupLogins.UseVisualStyleBackColor = True
+        Me.btnCreateOrder.Location = New System.Drawing.Point(3, 19)
+        Me.btnCreateOrder.Name = "btnCreateOrder"
+        Me.btnCreateOrder.Size = New System.Drawing.Size(264, 23)
+        Me.btnCreateOrder.TabIndex = 1
+        Me.btnCreateOrder.Text = "Create Order"
+        Me.btnCreateOrder.UseVisualStyleBackColor = True
         '
         'formHome
         '
@@ -166,4 +177,5 @@ Partial Class formHome
     Friend WithEvents btnCreateAccount As Button
     Friend WithEvents btnChangePassword As Button
     Friend WithEvents btnBackupLogins As System.Windows.Forms.Button
+    Friend WithEvents btnCreateOrder As Button
 End Class

@@ -107,6 +107,12 @@
     <Compile Include="formCreateAdmin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="formCreateOrder.Designer.vb">
+      <DependentUpon>formCreateOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formCreateOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="formHome.Designer.vb">
       <DependentUpon>formHome.vb</DependentUpon>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formCreateAdmin.resx">
       <DependentUpon>formCreateAdmin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formCreateOrder.resx">
+      <DependentUpon>formCreateOrder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formHome.resx">
       <DependentUpon>formHome.vb</DependentUpon>
