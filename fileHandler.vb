@@ -180,6 +180,10 @@ Module fileHandler
 
     End Sub
 
+    ''' <summary>
+    '''     Duplicates current state of the file you parse adding the current date onto the file to identify it.
+    ''' </summary>
+    ''' <param name="fileUrl">The url of th file that you want to backup</param>
     Public Sub backupFile(fileUrl As String)
 
         Dim fileUrlSplit() As String = fileUrl.Split(".")
@@ -204,7 +208,7 @@ Module fileHandler
         Dim backupItems() As String = backupString.Split("#")
         Array.Resize(backupItems, backupItems.Length - 1)
 
-        Dim fileStreamBackup As FileStream = New FileStream(backupfileUrl, FileMode.Truncate, FileAccess.Write)
+        Dim fileStreamBackup As FileStream = New FileStream(backupfileUrl, FileMode.Create, FileAccess.Write)
         Dim writerStreamBackup As StreamWriter = New StreamWriter(fileStreamBackup)
 
         For i = 0 To backupItems.Length - 1

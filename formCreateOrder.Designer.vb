@@ -88,6 +88,7 @@ Partial Class formCreateOrder
         '
         'txtItemNumber
         '
+        Me.txtItemNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtItemNumber.Location = New System.Drawing.Point(76, 26)
         Me.txtItemNumber.MaxLength = 9
         Me.txtItemNumber.Name = "txtItemNumber"
@@ -117,7 +118,7 @@ Partial Class formCreateOrder
         Me.Panel1.Controls.Add(Me.btnBack)
         Me.Panel1.Location = New System.Drawing.Point(12, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(200, 100)
+        Me.Panel1.Size = New System.Drawing.Size(81, 29)
         Me.Panel1.TabIndex = 1
         '
         'btnBack

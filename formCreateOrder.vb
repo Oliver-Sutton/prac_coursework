@@ -21,7 +21,7 @@ Public Class formCreateOrder
             lblUserFeedback.Text = "Please enter a valid item number"
             labelPositions.center(lblUserFeedback, panelCreateOrder)
             lblUserFeedback.Visible = True
-        ElseIf itemAmount.Length = 0 Or itemAmount = "0" Then
+        ElseIf itemAmount.Length = 0 Or itemAmount = "0" Or Not IsNumeric(itemAmount) Then
             lblUserFeedback.Text = "Please enter a valid item quantity"
             labelPositions.center(lblUserFeedback, panelCreateOrder)
             lblUserFeedback.Visible = True

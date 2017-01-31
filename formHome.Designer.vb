@@ -26,6 +26,7 @@ Partial Class formHome
         Me.btnCreateOrder = New System.Windows.Forms.Button()
         Me.lblUserPanel = New System.Windows.Forms.Label()
         Me.panelAdmin = New System.Windows.Forms.Panel()
+        Me.btnBackupOrders = New System.Windows.Forms.Button()
         Me.btnBackupLogins = New System.Windows.Forms.Button()
         Me.btnCreateAccount = New System.Windows.Forms.Button()
         Me.lblAdminPanel = New System.Windows.Forms.Label()
@@ -34,13 +35,10 @@ Partial Class formHome
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.lblUserSettings = New System.Windows.Forms.Label()
         Me.panelCurrentOrders = New System.Windows.Forms.Panel()
-        Me.lblItemAmount = New System.Windows.Forms.Label()
-        Me.lblItemID = New System.Windows.Forms.Label()
-        Me.lblOrderID = New System.Windows.Forms.Label()
-        Me.btnRefreshOrders = New System.Windows.Forms.Button()
-        Me.listOrders = New System.Windows.Forms.ListBox()
-        Me.lblCurrentOrders = New System.Windows.Forms.Label()
         Me.btnFulfilOrder = New System.Windows.Forms.Button()
+        Me.btnRefreshOrders = New System.Windows.Forms.Button()
+        Me.lblCurrentOrders = New System.Windows.Forms.Label()
+        Me.listOrders = New System.Windows.Forms.ListView()
         Me.panelUser.SuspendLayout()
         Me.panelAdmin.SuspendLayout()
         Me.panelUserSettings.SuspendLayout()
@@ -78,14 +76,24 @@ Partial Class formHome
         'panelAdmin
         '
         Me.panelAdmin.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelAdmin.Controls.Add(Me.btnBackupOrders)
         Me.panelAdmin.Controls.Add(Me.btnBackupLogins)
         Me.panelAdmin.Controls.Add(Me.btnCreateAccount)
         Me.panelAdmin.Controls.Add(Me.lblAdminPanel)
         Me.panelAdmin.Location = New System.Drawing.Point(288, 15)
         Me.panelAdmin.Name = "panelAdmin"
-        Me.panelAdmin.Size = New System.Drawing.Size(200, 100)
+        Me.panelAdmin.Size = New System.Drawing.Size(200, 143)
         Me.panelAdmin.TabIndex = 1
         Me.panelAdmin.Visible = False
+        '
+        'btnBackupOrders
+        '
+        Me.btnBackupOrders.Location = New System.Drawing.Point(3, 77)
+        Me.btnBackupOrders.Name = "btnBackupOrders"
+        Me.btnBackupOrders.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupOrders.TabIndex = 3
+        Me.btnBackupOrders.Text = "Backup Orders"
+        Me.btnBackupOrders.UseVisualStyleBackColor = True
         '
         'btnBackupLogins
         '
@@ -155,79 +163,50 @@ Partial Class formHome
         'panelCurrentOrders
         '
         Me.panelCurrentOrders.BackColor = System.Drawing.SystemColors.ControlDark
-        Me.panelCurrentOrders.Controls.Add(Me.btnFulfilOrder)
-        Me.panelCurrentOrders.Controls.Add(Me.lblItemAmount)
-        Me.panelCurrentOrders.Controls.Add(Me.lblItemID)
-        Me.panelCurrentOrders.Controls.Add(Me.lblOrderID)
-        Me.panelCurrentOrders.Controls.Add(Me.btnRefreshOrders)
         Me.panelCurrentOrders.Controls.Add(Me.listOrders)
+        Me.panelCurrentOrders.Controls.Add(Me.btnFulfilOrder)
+        Me.panelCurrentOrders.Controls.Add(Me.btnRefreshOrders)
         Me.panelCurrentOrders.Controls.Add(Me.lblCurrentOrders)
-        Me.panelCurrentOrders.Location = New System.Drawing.Point(288, 135)
+        Me.panelCurrentOrders.Location = New System.Drawing.Point(288, 164)
         Me.panelCurrentOrders.Name = "panelCurrentOrders"
-        Me.panelCurrentOrders.Size = New System.Drawing.Size(200, 334)
+        Me.panelCurrentOrders.Size = New System.Drawing.Size(313, 314)
         Me.panelCurrentOrders.TabIndex = 3
         '
-        'lblItemAmount
+        'btnFulfilOrder
         '
-        Me.lblItemAmount.AutoSize = True
-        Me.lblItemAmount.Location = New System.Drawing.Point(131, 29)
-        Me.lblItemAmount.Name = "lblItemAmount"
-        Me.lblItemAmount.Size = New System.Drawing.Size(66, 13)
-        Me.lblItemAmount.TabIndex = 5
-        Me.lblItemAmount.Text = "Item Amount"
-        '
-        'lblItemID
-        '
-        Me.lblItemID.AutoSize = True
-        Me.lblItemID.Location = New System.Drawing.Point(72, 29)
-        Me.lblItemID.Name = "lblItemID"
-        Me.lblItemID.Size = New System.Drawing.Size(41, 13)
-        Me.lblItemID.TabIndex = 4
-        Me.lblItemID.Text = "‪Item ID"
-        '
-        'lblOrderID
-        '
-        Me.lblOrderID.AutoSize = True
-        Me.lblOrderID.Location = New System.Drawing.Point(3, 29)
-        Me.lblOrderID.Name = "lblOrderID"
-        Me.lblOrderID.Size = New System.Drawing.Size(47, 13)
-        Me.lblOrderID.TabIndex = 3
-        Me.lblOrderID.Text = "Order ID"
+        Me.btnFulfilOrder.Location = New System.Drawing.Point(6, 256)
+        Me.btnFulfilOrder.Name = "btnFulfilOrder"
+        Me.btnFulfilOrder.Size = New System.Drawing.Size(300, 23)
+        Me.btnFulfilOrder.TabIndex = 6
+        Me.btnFulfilOrder.Text = "Fulfil Order"
+        Me.btnFulfilOrder.UseVisualStyleBackColor = True
         '
         'btnRefreshOrders
         '
-        Me.btnRefreshOrders.Location = New System.Drawing.Point(6, 305)
+        Me.btnRefreshOrders.Location = New System.Drawing.Point(6, 285)
         Me.btnRefreshOrders.Name = "btnRefreshOrders"
-        Me.btnRefreshOrders.Size = New System.Drawing.Size(191, 23)
+        Me.btnRefreshOrders.Size = New System.Drawing.Size(300, 23)
         Me.btnRefreshOrders.TabIndex = 2
         Me.btnRefreshOrders.Text = "Refresh Orders"
         Me.btnRefreshOrders.UseVisualStyleBackColor = True
         '
-        'listOrders
-        '
-        Me.listOrders.FormattingEnabled = True
-        Me.listOrders.Location = New System.Drawing.Point(3, 45)
-        Me.listOrders.Name = "listOrders"
-        Me.listOrders.Size = New System.Drawing.Size(194, 225)
-        Me.listOrders.TabIndex = 1
-        '
         'lblCurrentOrders
         '
         Me.lblCurrentOrders.AutoSize = True
-        Me.lblCurrentOrders.Location = New System.Drawing.Point(58, 3)
+        Me.lblCurrentOrders.Location = New System.Drawing.Point(110, 9)
         Me.lblCurrentOrders.Name = "lblCurrentOrders"
         Me.lblCurrentOrders.Size = New System.Drawing.Size(75, 13)
         Me.lblCurrentOrders.TabIndex = 0
         Me.lblCurrentOrders.Text = "Current Orders"
         '
-        'btnFulfilOrder
+        'listOrders
         '
-        Me.btnFulfilOrder.Location = New System.Drawing.Point(6, 276)
-        Me.btnFulfilOrder.Name = "btnFulfilOrder"
-        Me.btnFulfilOrder.Size = New System.Drawing.Size(191, 23)
-        Me.btnFulfilOrder.TabIndex = 6
-        Me.btnFulfilOrder.Text = "Fulfil Order"
-        Me.btnFulfilOrder.UseVisualStyleBackColor = True
+        Me.listOrders.Location = New System.Drawing.Point(6, 25)
+        Me.listOrders.Name = "listOrders"
+        Me.listOrders.Size = New System.Drawing.Size(300, 225)
+        Me.listOrders.TabIndex = 4
+        Me.listOrders.UseCompatibleStateImageBehavior = False
+        Me.listOrders.View = System.Windows.Forms.View.Details
         '
         'formHome
         '
@@ -270,9 +249,7 @@ Partial Class formHome
     Friend WithEvents panelCurrentOrders As Panel
     Friend WithEvents lblCurrentOrders As Label
     Friend WithEvents btnRefreshOrders As Button
-    Friend WithEvents listOrders As ListBox
-    Friend WithEvents lblItemID As Label
-    Friend WithEvents lblOrderID As Label
-    Friend WithEvents lblItemAmount As Label
     Friend WithEvents btnFulfilOrder As Button
+    Friend WithEvents btnBackupOrders As Button
+    Friend WithEvents listOrders As ListView
 End Class
