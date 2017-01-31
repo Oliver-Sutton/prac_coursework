@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Module fileHandler
     Function readFile(fileUrl As String) As String
+
         Dim fileString As String = ""
 
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
@@ -19,6 +20,7 @@ Module fileHandler
     End Function
 
     Function getUser(fileUrl As String, user As String) As String
+
         Dim userString As String = ""
 
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
@@ -129,7 +131,57 @@ Module fileHandler
 
     End Sub
 
+    ''' <summary>
+    '''     This class removes record from a file using its primary key.
+    ''' </summary>
+    ''' <param name="fileUrl">Url that the file is stored in</param>
+    ''' <param name="id">The primary key of record being deleted</param>
+    Public Sub removeRecord(fileUrl As String, id As String, arrayVal As Integer)
+
+        Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
+        Dim readerStream As StreamReader = New StreamReader(fileStream)
+
+        Dim tempRecords As String = ""
+
+        Do Until readerStream.Peek = -1
+            tempRecords += readerStream.ReadLine()
+        Loop
+
+        Dim records() As String = tempRecords.Split("#")
+        Array.Resize(records, records.Length - 1)
+
+        Dim newRecords As String = ""
+
+        For i = 0 To records.Length - 1
+            Dim recordSplit() As String = records(i).Split(",")
+            If id <> recordSplit(arrayVal) Then
+                newRecords += records(i) & "#"
+            End If
+        Next
+
+        fileStream.Flush()
+        readerStream.Close()
+        fileStream.Close()
+
+
+        Dim fileStreamWriter As FileStream = New FileStream(fileUrl, FileMode.Truncate, FileAccess.Write)
+        Dim writerStream As StreamWriter = New StreamWriter(fileStreamWriter)
+
+        Dim newRecordsSplit() As String = newRecords.Split("#")
+        Array.Resize(newRecordsSplit, newRecordsSplit.Length - 1)
+
+        For i = 0 To newRecordsSplit.Length - 1
+            writerStream.WriteLine(newRecordsSplit(i) & "#")
+        Next
+
+        fileStreamWriter.Flush()
+        writerStream.Close()
+        fileStreamWriter.Close()
+
+    End Sub
+
     Public Sub backupFile(fileUrl As String)
+
         Dim fileUrlSplit() As String = fileUrl.Split(".")
         Dim strDate As String = Date.Today
         Dim dateSplit() As String = strDate.Split("/")
