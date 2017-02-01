@@ -23,13 +23,16 @@ Partial Class formStockCheck
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panelStockCheck = New System.Windows.Forms.Panel()
+        Me.lblUserFeedback = New System.Windows.Forms.Label()
         Me.lblStockNumber = New System.Windows.Forms.Label()
         Me.lblInStock = New System.Windows.Forms.Label()
         Me.btnCheckStock = New System.Windows.Forms.Button()
         Me.lblItemID = New System.Windows.Forms.Label()
         Me.txtProductID = New System.Windows.Forms.TextBox()
-        Me.lblUserFeedback = New System.Windows.Forms.Label()
+        Me.panelNav = New System.Windows.Forms.Panel()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.panelStockCheck.SuspendLayout()
+        Me.panelNav.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelStockCheck
@@ -44,6 +47,16 @@ Partial Class formStockCheck
         Me.panelStockCheck.Name = "panelStockCheck"
         Me.panelStockCheck.Size = New System.Drawing.Size(266, 128)
         Me.panelStockCheck.TabIndex = 0
+        '
+        'lblUserFeedback
+        '
+        Me.lblUserFeedback.AutoSize = True
+        Me.lblUserFeedback.Location = New System.Drawing.Point(106, 107)
+        Me.lblUserFeedback.Name = "lblUserFeedback"
+        Me.lblUserFeedback.Size = New System.Drawing.Size(63, 13)
+        Me.lblUserFeedback.TabIndex = 9
+        Me.lblUserFeedback.Text = "Placeholder"
+        Me.lblUserFeedback.Visible = False
         '
         'lblStockNumber
         '
@@ -84,25 +97,34 @@ Partial Class formStockCheck
         'txtProductID
         '
         Me.txtProductID.Location = New System.Drawing.Point(76, 3)
+        Me.txtProductID.MaxLength = 9
         Me.txtProductID.Name = "txtProductID"
         Me.txtProductID.Size = New System.Drawing.Size(187, 20)
         Me.txtProductID.TabIndex = 0
         '
-        'lblUserFeedback
+        'panelNav
         '
-        Me.lblUserFeedback.AutoSize = True
-        Me.lblUserFeedback.Location = New System.Drawing.Point(106, 107)
-        Me.lblUserFeedback.Name = "lblUserFeedback"
-        Me.lblUserFeedback.Size = New System.Drawing.Size(63, 13)
-        Me.lblUserFeedback.TabIndex = 9
-        Me.lblUserFeedback.Text = "Placeholder"
-        Me.lblUserFeedback.Visible = False
+        Me.panelNav.Controls.Add(Me.btnBack)
+        Me.panelNav.Location = New System.Drawing.Point(12, 12)
+        Me.panelNav.Name = "panelNav"
+        Me.panelNav.Size = New System.Drawing.Size(81, 30)
+        Me.panelNav.TabIndex = 1
+        '
+        'btnBack
+        '
+        Me.btnBack.Location = New System.Drawing.Point(3, 3)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(75, 23)
+        Me.btnBack.TabIndex = 0
+        Me.btnBack.Text = "Back"
+        Me.btnBack.UseVisualStyleBackColor = True
         '
         'formStockCheck
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(542, 524)
+        Me.Controls.Add(Me.panelNav)
         Me.Controls.Add(Me.panelStockCheck)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "formStockCheck"
@@ -110,6 +132,7 @@ Partial Class formStockCheck
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.panelStockCheck.ResumeLayout(False)
         Me.panelStockCheck.PerformLayout()
+        Me.panelNav.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -121,4 +144,6 @@ Partial Class formStockCheck
     Friend WithEvents txtProductID As TextBox
     Friend WithEvents lblStockNumber As Label
     Friend WithEvents lblUserFeedback As Label
+    Friend WithEvents panelNav As Panel
+    Friend WithEvents btnBack As Button
 End Class

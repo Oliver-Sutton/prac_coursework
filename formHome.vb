@@ -87,7 +87,7 @@
 
         listOrders.Items.RemoveAt(listOrders.FocusedItem.Index)
 
-        ''fileHandler.removeRecord(ordersUrl, orderID, 0)
+        fileHandler.removeRecord(ordersUrl, orderID, 0)
 
         Dim product() As String = fileHandler.getRecord(productsUrl, productID, 0).Split(",")
 

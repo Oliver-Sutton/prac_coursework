@@ -1,5 +1,10 @@
 ﻿Imports System.IO
 Module fileHandler
+    ''' <summary>
+    '''     Reads an entire file returning all of its records in a single string using "#" to split.
+    ''' </summary>
+    ''' <param name="fileUrl">Url of the file you want to read.</param>
+    ''' <returns>Every record in the file.</returns>
     Function readFile(fileUrl As String) As String
 
         Dim fileString As String = ""
@@ -19,6 +24,13 @@ Module fileHandler
 
     End Function
 
+    ''' <summary>
+    '''     Gets a single record using a primary key.
+    ''' </summary>
+    ''' <param name="fileUrl">Url of the file you want to get the record from.</param>
+    ''' <param name="key">Primary key that you are going to search with.</param>
+    ''' <param name="arrayVal">Position in the record that the primary key is at from 0</param>
+    ''' <returns>A record if it is found </returns>
     Function getRecord(fileUrl As String, key As String, arrayVal As Integer) As String
 
         Dim recordString As String = ""
@@ -234,6 +246,11 @@ Module fileHandler
 
     End Sub
 
+    ''' <summary>
+    '''     Adds record to file you parse.
+    ''' </summary>
+    ''' <param name="fileUrl">Url of the file you want to add the record to</param>
+    ''' <param name="record">The complete string of the record you want to add.</param>
     Public Sub addRecord(fileUrl As String, record As String)
 
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Append, FileAccess.Write)

@@ -36,6 +36,11 @@
                 Exit Sub
             End If
         Next
+
+        lblUserFeedback.Text = "Product not found"
+        labelPositions.center(lblUserFeedback, panelStockCheck)
+        lblUserFeedback.Visible = True
+
     End Sub
 
     Private Sub txtItemID_TextChanged(sender As Object, e As EventArgs) Handles txtProductID.TextChanged
@@ -46,5 +51,10 @@
             txtProductID.SelectedText += "-"
         End If
 
+    End Sub
+
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+        formHome.Show()
+        Me.Close()
     End Sub
 End Class
