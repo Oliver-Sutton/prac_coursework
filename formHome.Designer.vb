@@ -28,6 +28,9 @@ Partial Class formHome
         Me.btnCreateOrder = New System.Windows.Forms.Button()
         Me.lblUserPanel = New System.Windows.Forms.Label()
         Me.panelAdmin = New System.Windows.Forms.Panel()
+        Me.btnRemoveAccount = New System.Windows.Forms.Button()
+        Me.btnBackupAll = New System.Windows.Forms.Button()
+        Me.btnBackupProducts = New System.Windows.Forms.Button()
         Me.btnBackupOrders = New System.Windows.Forms.Button()
         Me.btnBackupLogins = New System.Windows.Forms.Button()
         Me.btnCreateAccount = New System.Windows.Forms.Button()
@@ -41,8 +44,6 @@ Partial Class formHome
         Me.btnFulfilOrder = New System.Windows.Forms.Button()
         Me.btnRefreshOrders = New System.Windows.Forms.Button()
         Me.lblCurrentOrders = New System.Windows.Forms.Label()
-        Me.btnBackupProducts = New System.Windows.Forms.Button()
-        Me.btnBackupAll = New System.Windows.Forms.Button()
         Me.panelNav = New System.Windows.Forms.Panel()
         Me.btnExit = New System.Windows.Forms.Button()
         Me.panelUser.SuspendLayout()
@@ -103,6 +104,7 @@ Partial Class formHome
         'panelAdmin
         '
         Me.panelAdmin.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelAdmin.Controls.Add(Me.btnRemoveAccount)
         Me.panelAdmin.Controls.Add(Me.btnBackupAll)
         Me.panelAdmin.Controls.Add(Me.btnBackupProducts)
         Me.panelAdmin.Controls.Add(Me.btnBackupOrders)
@@ -111,25 +113,52 @@ Partial Class formHome
         Me.panelAdmin.Controls.Add(Me.lblAdminPanel)
         Me.panelAdmin.Location = New System.Drawing.Point(288, 15)
         Me.panelAdmin.Name = "panelAdmin"
-        Me.panelAdmin.Size = New System.Drawing.Size(200, 163)
+        Me.panelAdmin.Size = New System.Drawing.Size(200, 191)
         Me.panelAdmin.TabIndex = 1
         Me.panelAdmin.Visible = False
         '
+        'btnRemoveAccount
+        '
+        Me.btnRemoveAccount.Location = New System.Drawing.Point(3, 48)
+        Me.btnRemoveAccount.Name = "btnRemoveAccount"
+        Me.btnRemoveAccount.Size = New System.Drawing.Size(194, 23)
+        Me.btnRemoveAccount.TabIndex = 2
+        Me.btnRemoveAccount.Text = "Remove Account"
+        Me.btnRemoveAccount.UseVisualStyleBackColor = True
+        '
+        'btnBackupAll
+        '
+        Me.btnBackupAll.Location = New System.Drawing.Point(3, 164)
+        Me.btnBackupAll.Name = "btnBackupAll"
+        Me.btnBackupAll.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupAll.TabIndex = 6
+        Me.btnBackupAll.Text = "Backup All"
+        Me.btnBackupAll.UseVisualStyleBackColor = True
+        '
+        'btnBackupProducts
+        '
+        Me.btnBackupProducts.Location = New System.Drawing.Point(3, 135)
+        Me.btnBackupProducts.Name = "btnBackupProducts"
+        Me.btnBackupProducts.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupProducts.TabIndex = 5
+        Me.btnBackupProducts.Text = "Backup Products"
+        Me.btnBackupProducts.UseVisualStyleBackColor = True
+        '
         'btnBackupOrders
         '
-        Me.btnBackupOrders.Location = New System.Drawing.Point(3, 77)
+        Me.btnBackupOrders.Location = New System.Drawing.Point(3, 106)
         Me.btnBackupOrders.Name = "btnBackupOrders"
         Me.btnBackupOrders.Size = New System.Drawing.Size(194, 23)
-        Me.btnBackupOrders.TabIndex = 3
+        Me.btnBackupOrders.TabIndex = 4
         Me.btnBackupOrders.Text = "Backup Orders"
         Me.btnBackupOrders.UseVisualStyleBackColor = True
         '
         'btnBackupLogins
         '
-        Me.btnBackupLogins.Location = New System.Drawing.Point(3, 48)
+        Me.btnBackupLogins.Location = New System.Drawing.Point(3, 77)
         Me.btnBackupLogins.Name = "btnBackupLogins"
         Me.btnBackupLogins.Size = New System.Drawing.Size(194, 23)
-        Me.btnBackupLogins.TabIndex = 2
+        Me.btnBackupLogins.TabIndex = 3
         Me.btnBackupLogins.Text = "Backup Logins"
         Me.btnBackupLogins.UseVisualStyleBackColor = True
         '
@@ -196,7 +225,7 @@ Partial Class formHome
         Me.panelCurrentOrders.Controls.Add(Me.btnFulfilOrder)
         Me.panelCurrentOrders.Controls.Add(Me.btnRefreshOrders)
         Me.panelCurrentOrders.Controls.Add(Me.lblCurrentOrders)
-        Me.panelCurrentOrders.Location = New System.Drawing.Point(288, 184)
+        Me.panelCurrentOrders.Location = New System.Drawing.Point(288, 273)
         Me.panelCurrentOrders.Name = "panelCurrentOrders"
         Me.panelCurrentOrders.Size = New System.Drawing.Size(313, 314)
         Me.panelCurrentOrders.TabIndex = 3
@@ -238,24 +267,6 @@ Partial Class formHome
         Me.lblCurrentOrders.TabIndex = 0
         Me.lblCurrentOrders.Text = "Current Orders"
         '
-        'btnBackupProducts
-        '
-        Me.btnBackupProducts.Location = New System.Drawing.Point(3, 106)
-        Me.btnBackupProducts.Name = "btnBackupProducts"
-        Me.btnBackupProducts.Size = New System.Drawing.Size(194, 23)
-        Me.btnBackupProducts.TabIndex = 4
-        Me.btnBackupProducts.Text = "Backup Products"
-        Me.btnBackupProducts.UseVisualStyleBackColor = True
-        '
-        'btnBackupAll
-        '
-        Me.btnBackupAll.Location = New System.Drawing.Point(3, 135)
-        Me.btnBackupAll.Name = "btnBackupAll"
-        Me.btnBackupAll.Size = New System.Drawing.Size(194, 23)
-        Me.btnBackupAll.TabIndex = 5
-        Me.btnBackupAll.Text = "Backup All"
-        Me.btnBackupAll.UseVisualStyleBackColor = True
-        '
         'panelNav
         '
         Me.panelNav.Controls.Add(Me.btnExit)
@@ -277,7 +288,7 @@ Partial Class formHome
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(692, 510)
+        Me.ClientSize = New System.Drawing.Size(692, 612)
         Me.Controls.Add(Me.panelNav)
         Me.Controls.Add(Me.panelCurrentOrders)
         Me.Controls.Add(Me.panelUserSettings)
@@ -325,4 +336,5 @@ Partial Class formHome
     Friend WithEvents btnBackupProducts As Button
     Friend WithEvents panelNav As Panel
     Friend WithEvents btnExit As Button
+    Friend WithEvents btnRemoveAccount As Button
 End Class

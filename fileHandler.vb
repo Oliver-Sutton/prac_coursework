@@ -5,7 +5,7 @@ Module fileHandler
     ''' </summary>
     ''' <param name="fileUrl">Url of the file you want to read.</param>
     ''' <returns>Every record in the file.</returns>
-    Function readFile(fileUrl As String) As String
+    Function readFile(ByVal fileUrl As String) As String
 
         Dim fileString As String = ""
 
@@ -31,7 +31,7 @@ Module fileHandler
     ''' <param name="key">Primary key that you are going to search with.</param>
     ''' <param name="arrayVal">Position in the record that the primary key is at from 0</param>
     ''' <returns>A record if it is found </returns>
-    Function getRecord(fileUrl As String, key As String, arrayVal As Integer) As String
+    Function getRecord(ByVal fileUrl As String, ByVal key As String, ByVal arrayVal As Integer) As String
 
         Dim recordString As String = ""
 
@@ -69,7 +69,7 @@ Module fileHandler
     ''' </summary>
     ''' <param name="search"></param>
     ''' <returns>If username is unique returns true else false</returns>
-    Public Function isUnique(search As String, fileUrl As String, arrayVal As Integer) As Boolean
+    Public Function isUnique(ByVal search As String, ByVal fileUrl As String, ByVal arrayVal As Integer) As Boolean
 
         Dim tempItems As String = readFile(fileUrl)
         Dim items = tempItems.Split("#")
@@ -96,7 +96,7 @@ Module fileHandler
     ''' <param name="newValue">New valye of the item you are changing</param>
     ''' <param name="arrayVal">Position the field is in from 0</param>
     ''' <param name="keyVal">Postion the primary key is in from 0</param>
-    Public Sub changeRecord(fileUrl As String, currentValue As String, key As String, newValue As String, arrayVal As Integer, keyVal As Integer)
+    Public Sub changeRecord(ByVal fileUrl As String, ByVal currentValue As String, ByVal key As String, ByVal newValue As String, ByVal arrayVal As Integer, ByVal keyVal As Integer)
 
         Dim fileSteamRead As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
         Dim streamReader As StreamReader = New StreamReader(fileSteamRead)
@@ -161,7 +161,7 @@ Module fileHandler
     ''' </summary>
     ''' <param name="fileUrl">Url that the file is stored in</param>
     ''' <param name="id">The primary key of record being deleted</param>
-    Public Sub removeRecord(fileUrl As String, id As String, arrayVal As Integer)
+    Public Sub removeRecord(ByVal fileUrl As String, ByVal id As String, ByVal arrayVal As Integer)
 
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
         Dim readerStream As StreamReader = New StreamReader(fileStream)
@@ -209,7 +209,7 @@ Module fileHandler
     '''     Duplicates current state of the file you parse adding the current date onto the file to identify it.
     ''' </summary>
     ''' <param name="fileUrl">The url of th file that you want to backup</param>
-    Public Sub backupFile(fileUrl As String)
+    Public Sub backupFile(ByVal fileUrl As String)
 
         Dim fileUrlSplit() As String = fileUrl.Split(".")
         Dim strDate As String = Date.Today
@@ -251,7 +251,7 @@ Module fileHandler
     ''' </summary>
     ''' <param name="fileUrl">Url of the file you want to add the record to</param>
     ''' <param name="record">The complete string of the record you want to add.</param>
-    Public Sub addRecord(fileUrl As String, record As String)
+    Public Sub addRecord(ByVal fileUrl As String, ByVal record As String)
 
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Append, FileAccess.Write)
         Dim writerStream As StreamWriter = New StreamWriter(fileStream)

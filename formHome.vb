@@ -85,19 +85,21 @@
         Dim productID As String = listOrders.Items(listOrders.FocusedItem.Index).SubItems(1).Text
         Dim amount As String = listOrders.Items(listOrders.FocusedItem.Index).SubItems(2).Text
 
-        listOrders.Items.RemoveAt(listOrders.FocusedItem.Index)
-
-        fileHandler.removeRecord(ordersUrl, orderID, 0)
-
         Dim product() As String = fileHandler.getRecord(productsUrl, productID, 0).Split(",")
 
         Dim productAmountNew As Integer = CInt(product(1))
 
         productAmountNew -= CInt(amount)
 
+        If productAmountNew < 0 Then
+            MsgBox("Product out of stock or not enough to fulfil order")
+            Exit Sub
+        End If
+
+        fileHandler.removeRecord(ordersUrl, orderID, 0)
         fileHandler.changeRecord(productsUrl, product(1), productID, productAmountNew, 1, 0)
 
-
+        listOrders.Items.RemoveAt(listOrders.FocusedItem.Index)
 
     End Sub
 
@@ -137,5 +139,10 @@
 
         Me.Close()
 
+    End Sub
+
+    Private Sub btnRemoveAccount_Click(sender As Object, e As EventArgs) Handles btnRemoveAccount.Click
+        formRemoveAccount.show()
+        Me.Close()
     End Sub
 End Class

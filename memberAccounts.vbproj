@@ -132,6 +132,12 @@
       <DependentUpon>formLogin.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="formRemoveAccount.Designer.vb">
+      <DependentUpon>formRemoveAccount.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formRemoveAccount.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="formSplash.Designer.vb">
       <DependentUpon>formSplash.vb</DependentUpon>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formRemoveAccount.resx">
+      <DependentUpon>formRemoveAccount.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formSplash.resx">
       <DependentUpon>formSplash.vb</DependentUpon>
