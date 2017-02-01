@@ -7,7 +7,7 @@
         Dim newPassword As String = txtNewPassword.Text
         Dim newPasswordAgain As String = txtNewPasswordAgain.Text
 
-        fileHandler.changeUser(loginUrl, currentPassword, globalVariables.username, newPassword, 3)
+        fileHandler.changeRecord(loginUrl, currentPassword, globalVariables.username, newPassword, 3, 2)
 
     End Sub
 End Class

@@ -23,6 +23,8 @@ Partial Class formHome
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.panelUser = New System.Windows.Forms.Panel()
+        Me.btnStockCheck = New System.Windows.Forms.Button()
+        Me.btnCancelOrder = New System.Windows.Forms.Button()
         Me.btnCreateOrder = New System.Windows.Forms.Button()
         Me.lblUserPanel = New System.Windows.Forms.Label()
         Me.panelAdmin = New System.Windows.Forms.Panel()
@@ -35,25 +37,50 @@ Partial Class formHome
         Me.btnLogOut = New System.Windows.Forms.Button()
         Me.lblUserSettings = New System.Windows.Forms.Label()
         Me.panelCurrentOrders = New System.Windows.Forms.Panel()
+        Me.listOrders = New System.Windows.Forms.ListView()
         Me.btnFulfilOrder = New System.Windows.Forms.Button()
         Me.btnRefreshOrders = New System.Windows.Forms.Button()
         Me.lblCurrentOrders = New System.Windows.Forms.Label()
-        Me.listOrders = New System.Windows.Forms.ListView()
+        Me.btnBackupProducts = New System.Windows.Forms.Button()
+        Me.btnBackupAll = New System.Windows.Forms.Button()
+        Me.panelNav = New System.Windows.Forms.Panel()
+        Me.btnExit = New System.Windows.Forms.Button()
         Me.panelUser.SuspendLayout()
         Me.panelAdmin.SuspendLayout()
         Me.panelUserSettings.SuspendLayout()
         Me.panelCurrentOrders.SuspendLayout()
+        Me.panelNav.SuspendLayout()
         Me.SuspendLayout()
         '
         'panelUser
         '
         Me.panelUser.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelUser.Controls.Add(Me.btnStockCheck)
+        Me.panelUser.Controls.Add(Me.btnCancelOrder)
         Me.panelUser.Controls.Add(Me.btnCreateOrder)
         Me.panelUser.Controls.Add(Me.lblUserPanel)
         Me.panelUser.Location = New System.Drawing.Point(12, 15)
         Me.panelUser.Name = "panelUser"
         Me.panelUser.Size = New System.Drawing.Size(270, 183)
         Me.panelUser.TabIndex = 0
+        '
+        'btnStockCheck
+        '
+        Me.btnStockCheck.Location = New System.Drawing.Point(3, 77)
+        Me.btnStockCheck.Name = "btnStockCheck"
+        Me.btnStockCheck.Size = New System.Drawing.Size(264, 23)
+        Me.btnStockCheck.TabIndex = 3
+        Me.btnStockCheck.Text = "Check Stock"
+        Me.btnStockCheck.UseVisualStyleBackColor = True
+        '
+        'btnCancelOrder
+        '
+        Me.btnCancelOrder.Location = New System.Drawing.Point(3, 48)
+        Me.btnCancelOrder.Name = "btnCancelOrder"
+        Me.btnCancelOrder.Size = New System.Drawing.Size(264, 23)
+        Me.btnCancelOrder.TabIndex = 2
+        Me.btnCancelOrder.Text = "Cancel Order"
+        Me.btnCancelOrder.UseVisualStyleBackColor = True
         '
         'btnCreateOrder
         '
@@ -76,13 +103,15 @@ Partial Class formHome
         'panelAdmin
         '
         Me.panelAdmin.BackColor = System.Drawing.SystemColors.ControlDark
+        Me.panelAdmin.Controls.Add(Me.btnBackupAll)
+        Me.panelAdmin.Controls.Add(Me.btnBackupProducts)
         Me.panelAdmin.Controls.Add(Me.btnBackupOrders)
         Me.panelAdmin.Controls.Add(Me.btnBackupLogins)
         Me.panelAdmin.Controls.Add(Me.btnCreateAccount)
         Me.panelAdmin.Controls.Add(Me.lblAdminPanel)
         Me.panelAdmin.Location = New System.Drawing.Point(288, 15)
         Me.panelAdmin.Name = "panelAdmin"
-        Me.panelAdmin.Size = New System.Drawing.Size(200, 143)
+        Me.panelAdmin.Size = New System.Drawing.Size(200, 163)
         Me.panelAdmin.TabIndex = 1
         Me.panelAdmin.Visible = False
         '
@@ -167,10 +196,20 @@ Partial Class formHome
         Me.panelCurrentOrders.Controls.Add(Me.btnFulfilOrder)
         Me.panelCurrentOrders.Controls.Add(Me.btnRefreshOrders)
         Me.panelCurrentOrders.Controls.Add(Me.lblCurrentOrders)
-        Me.panelCurrentOrders.Location = New System.Drawing.Point(288, 164)
+        Me.panelCurrentOrders.Location = New System.Drawing.Point(288, 184)
         Me.panelCurrentOrders.Name = "panelCurrentOrders"
         Me.panelCurrentOrders.Size = New System.Drawing.Size(313, 314)
         Me.panelCurrentOrders.TabIndex = 3
+        '
+        'listOrders
+        '
+        Me.listOrders.FullRowSelect = True
+        Me.listOrders.Location = New System.Drawing.Point(6, 25)
+        Me.listOrders.Name = "listOrders"
+        Me.listOrders.Size = New System.Drawing.Size(300, 225)
+        Me.listOrders.TabIndex = 4
+        Me.listOrders.UseCompatibleStateImageBehavior = False
+        Me.listOrders.View = System.Windows.Forms.View.Details
         '
         'btnFulfilOrder
         '
@@ -199,20 +238,47 @@ Partial Class formHome
         Me.lblCurrentOrders.TabIndex = 0
         Me.lblCurrentOrders.Text = "Current Orders"
         '
-        'listOrders
+        'btnBackupProducts
         '
-        Me.listOrders.Location = New System.Drawing.Point(6, 25)
-        Me.listOrders.Name = "listOrders"
-        Me.listOrders.Size = New System.Drawing.Size(300, 225)
-        Me.listOrders.TabIndex = 4
-        Me.listOrders.UseCompatibleStateImageBehavior = False
-        Me.listOrders.View = System.Windows.Forms.View.Details
+        Me.btnBackupProducts.Location = New System.Drawing.Point(3, 106)
+        Me.btnBackupProducts.Name = "btnBackupProducts"
+        Me.btnBackupProducts.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupProducts.TabIndex = 4
+        Me.btnBackupProducts.Text = "Backup Products"
+        Me.btnBackupProducts.UseVisualStyleBackColor = True
+        '
+        'btnBackupAll
+        '
+        Me.btnBackupAll.Location = New System.Drawing.Point(3, 135)
+        Me.btnBackupAll.Name = "btnBackupAll"
+        Me.btnBackupAll.Size = New System.Drawing.Size(194, 23)
+        Me.btnBackupAll.TabIndex = 5
+        Me.btnBackupAll.Text = "Backup All"
+        Me.btnBackupAll.UseVisualStyleBackColor = True
+        '
+        'panelNav
+        '
+        Me.panelNav.Controls.Add(Me.btnExit)
+        Me.panelNav.Location = New System.Drawing.Point(536, 12)
+        Me.panelNav.Name = "panelNav"
+        Me.panelNav.Size = New System.Drawing.Size(81, 29)
+        Me.panelNav.TabIndex = 4
+        '
+        'btnExit
+        '
+        Me.btnExit.Location = New System.Drawing.Point(3, 3)
+        Me.btnExit.Name = "btnExit"
+        Me.btnExit.Size = New System.Drawing.Size(75, 23)
+        Me.btnExit.TabIndex = 0
+        Me.btnExit.Text = "Exit"
+        Me.btnExit.UseVisualStyleBackColor = True
         '
         'formHome
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(692, 510)
+        Me.Controls.Add(Me.panelNav)
         Me.Controls.Add(Me.panelCurrentOrders)
         Me.Controls.Add(Me.panelUserSettings)
         Me.Controls.Add(Me.panelAdmin)
@@ -231,6 +297,7 @@ Partial Class formHome
         Me.panelUserSettings.PerformLayout()
         Me.panelCurrentOrders.ResumeLayout(False)
         Me.panelCurrentOrders.PerformLayout()
+        Me.panelNav.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -252,4 +319,10 @@ Partial Class formHome
     Friend WithEvents btnFulfilOrder As Button
     Friend WithEvents btnBackupOrders As Button
     Friend WithEvents listOrders As ListView
+    Friend WithEvents btnCancelOrder As Button
+    Friend WithEvents btnStockCheck As Button
+    Friend WithEvents btnBackupAll As Button
+    Friend WithEvents btnBackupProducts As Button
+    Friend WithEvents panelNav As Panel
+    Friend WithEvents btnExit As Button
 End Class

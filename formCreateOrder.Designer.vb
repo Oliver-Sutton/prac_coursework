@@ -27,7 +27,7 @@ Partial Class formCreateOrder
         Me.btnPlaceOrder = New System.Windows.Forms.Button()
         Me.txtItemAmount = New System.Windows.Forms.TextBox()
         Me.lblItemAmount = New System.Windows.Forms.Label()
-        Me.txtItemNumber = New System.Windows.Forms.TextBox()
+        Me.txtProductID = New System.Windows.Forms.TextBox()
         Me.lblItemNumber = New System.Windows.Forms.Label()
         Me.lblCreateOrder = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -42,7 +42,7 @@ Partial Class formCreateOrder
         Me.panelCreateOrder.Controls.Add(Me.btnPlaceOrder)
         Me.panelCreateOrder.Controls.Add(Me.txtItemAmount)
         Me.panelCreateOrder.Controls.Add(Me.lblItemAmount)
-        Me.panelCreateOrder.Controls.Add(Me.txtItemNumber)
+        Me.panelCreateOrder.Controls.Add(Me.txtProductID)
         Me.panelCreateOrder.Controls.Add(Me.lblItemNumber)
         Me.panelCreateOrder.Controls.Add(Me.lblCreateOrder)
         Me.panelCreateOrder.Location = New System.Drawing.Point(158, 135)
@@ -86,14 +86,14 @@ Partial Class formCreateOrder
         Me.lblItemAmount.TabIndex = 3
         Me.lblItemAmount.Text = "Item Quantity"
         '
-        'txtItemNumber
+        'txtProductID
         '
-        Me.txtItemNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.txtItemNumber.Location = New System.Drawing.Point(76, 26)
-        Me.txtItemNumber.MaxLength = 9
-        Me.txtItemNumber.Name = "txtItemNumber"
-        Me.txtItemNumber.Size = New System.Drawing.Size(153, 20)
-        Me.txtItemNumber.TabIndex = 2
+        Me.txtProductID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtProductID.Location = New System.Drawing.Point(76, 26)
+        Me.txtProductID.MaxLength = 9
+        Me.txtProductID.Name = "txtProductID"
+        Me.txtProductID.Size = New System.Drawing.Size(153, 20)
+        Me.txtProductID.TabIndex = 2
         '
         'lblItemNumber
         '
@@ -153,7 +153,7 @@ Partial Class formCreateOrder
     Friend WithEvents btnPlaceOrder As Button
     Friend WithEvents txtItemAmount As TextBox
     Friend WithEvents lblItemAmount As Label
-    Friend WithEvents txtItemNumber As TextBox
+    Friend WithEvents txtProductID As TextBox
     Friend WithEvents lblItemNumber As Label
     Friend WithEvents lblUserFeedback As Label
     Friend WithEvents Panel1 As Panel

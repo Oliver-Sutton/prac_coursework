@@ -10,7 +10,7 @@ Public Class formCreateOrder
 
     Private Sub btnPlaceOrder_Click(sender As Object, e As EventArgs) Handles btnPlaceOrder.Click
 
-        Dim itemNumber As String = txtItemNumber.Text
+        Dim itemNumber As String = txtProductID.Text
         Dim itemAmount As String = txtItemAmount.Text
 
         Dim orderID As String = createOrderID()
@@ -34,7 +34,7 @@ Public Class formCreateOrder
                 orderID = createOrderID()
             Loop
             fileHandler.addRecord(orderFileUrl, orderID & "," & itemNumber & "," & itemAmount & "#")
-            txtItemNumber.Clear()
+            txtProductID.Clear()
             txtItemAmount.Clear()
             lblUserFeedback.Text = "Order ID = " & orderID
             labelPositions.center(lblUserFeedback, panelCreateOrder)
@@ -44,12 +44,12 @@ Public Class formCreateOrder
 
     End Sub
 
-    Private Sub txtItemNumber_TextChanged(sender As Object, e As EventArgs) Handles txtItemNumber.TextChanged
+    Private Sub txtItemNumber_TextChanged(sender As Object, e As EventArgs) Handles txtProductID.TextChanged
 
-        Dim text As String = txtItemNumber.Text
+        Dim text As String = txtProductID.Text
 
         If text.Length = 2 Or text.Length = 6 Then
-            txtItemNumber.SelectedText += "-"
+            txtProductID.SelectedText += "-"
         End If
 
     End Sub

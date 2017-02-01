@@ -8,7 +8,7 @@
         labelPositions.center(lblUserPanel, panelUser)
         labelPositions.center(lblUserSettings, panelUserSettings)
 
-        listOrders.FullRowSelect = True
+        panelNav.Left = Me.Width - (panelNav.Width + 20)
 
         Dim orderID, productID, amount As ColumnHeader
         orderID = New ColumnHeader
@@ -78,7 +78,8 @@
 
     Private Sub btnFulfilOrder_Click(sender As Object, e As EventArgs) Handles btnFulfilOrder.Click
 
-        Dim fileUrl As String = Application.StartupPath + "/files/orders.txt"
+        Dim ordersUrl As String = Application.StartupPath + "/files/orders.txt"
+        Dim productsUrl As String = Application.StartupPath + "/files/products.txt"
 
         Dim orderID As String = listOrders.Items(listOrders.FocusedItem.Index).SubItems(0).Text
         Dim productID As String = listOrders.Items(listOrders.FocusedItem.Index).SubItems(1).Text
@@ -86,12 +87,55 @@
 
         listOrders.Items.RemoveAt(listOrders.FocusedItem.Index)
 
-        fileHandler.removeRecord(fileUrl, orderID, 0)
+        ''fileHandler.removeRecord(ordersUrl, orderID, 0)
+
+        Dim product() As String = fileHandler.getRecord(productsUrl, productID, 0).Split(",")
+
+        Dim productAmountNew As Integer = CInt(product(1))
+
+        productAmountNew -= CInt(amount)
+
+        fileHandler.changeRecord(productsUrl, product(1), productID, productAmountNew, 1, 0)
+
+
 
     End Sub
 
     Private Sub btnBackupOrders_Click(sender As Object, e As EventArgs) Handles btnBackupOrders.Click
         Dim ordersUrl As String = Application.StartupPath + "/files/orders.txt"
         fileHandler.backupFile(ordersUrl)
+    End Sub
+
+    Private Sub btnCancelOrder_Click(sender As Object, e As EventArgs) Handles btnCancelOrder.Click
+        formCancelOrders.show()
+        Me.Close()
+    End Sub
+
+    Private Sub btnStockCheck_Click(sender As Object, e As EventArgs) Handles btnStockCheck.Click
+        formStockCheck.show()
+        Me.Close()
+    End Sub
+
+    Private Sub btnBackupProducts_Click(sender As Object, e As EventArgs) Handles btnBackupProducts.Click
+        Dim productsUrl As String = Application.StartupPath + "/files/products.txt"
+        fileHandler.backupFile(productsUrl)
+    End Sub
+
+    Private Sub btnBackupAll_Click(sender As Object, e As EventArgs) Handles btnBackupAll.Click
+
+        Dim loginUrl As String = Application.StartupPath + "/files/login.txt"
+        Dim ordersUrl As String = Application.StartupPath + "/files/orders.txt"
+        Dim productsUrl As String = Application.StartupPath + "/files/products.txt"
+
+        fileHandler.backupFile(loginUrl)
+        fileHandler.backupFile(ordersUrl)
+        fileHandler.backupFile(productsUrl)
+
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+
+        Me.Close()
+
     End Sub
 End Class

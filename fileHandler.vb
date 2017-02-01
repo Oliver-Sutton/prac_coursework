@@ -19,32 +19,36 @@ Module fileHandler
 
     End Function
 
-    Function getUser(fileUrl As String, user As String) As String
+    Function getRecord(fileUrl As String, key As String, arrayVal As Integer) As String
 
-        Dim userString As String = ""
+        Dim recordString As String = ""
 
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
         Dim streamReader As StreamReader = New StreamReader(fileStream)
 
-        Dim tempUsers As String = ""
-        Dim users() As String
+        Dim tempRecords As String = ""
+        Dim records() As String
 
         Do Until streamReader.Peek() = -1
-            tempUsers += streamReader.ReadLine()
+            tempRecords += streamReader.ReadLine()
         Loop
 
-        users = tempUsers.Split("#")
-        Array.Resize(users, user.Length - 1)
+        fileStream.Flush()
+        streamReader.Close()
+        fileStream.Close()
 
-        For i = 1 To user.Length
-            Dim userSplit = users(i).Split(",")
-            If user = userSplit(2) Then
-                userString = user(i)
+        records = tempRecords.Split("#")
+        Array.Resize(records, records.Length - 1)
+
+        For i = 0 To records.Length - 1
+            Dim recordSplit = records(i).Split(",")
+            If key = recordSplit(arrayVal) Then
+                recordString = records(i)
                 Exit For
             End If
         Next
 
-        Return userString
+        Return recordString
 
     End Function
 
@@ -71,59 +75,68 @@ Module fileHandler
         Return True
     End Function
 
-    Public Sub changeUser(fileUrl As String, current As String, username As String, edit As String, arrayVal As Integer)
+    ''' <summary>
+    '''     This class edits a record that already in a file.
+    ''' </summary>
+    ''' <param name="fileUrl">The url of the file you want to edit</param>
+    ''' <param name="currentValue">Current value of the item you are changing</param>
+    ''' <param name="key">Primary key of the record you are editing</param>
+    ''' <param name="newValue">New valye of the item you are changing</param>
+    ''' <param name="arrayVal">Position the field is in from 0</param>
+    ''' <param name="keyVal">Postion the primary key is in from 0</param>
+    Public Sub changeRecord(fileUrl As String, currentValue As String, key As String, newValue As String, arrayVal As Integer, keyVal As Integer)
 
         Dim fileSteamRead As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
         Dim streamReader As StreamReader = New StreamReader(fileSteamRead)
 
-        Dim tempUsers As String = ""
-        Dim users() As String
+        Dim tempRecords As String = ""
+        Dim records() As String
 
         Do Until streamReader.Peek() = -1
-            tempUsers += streamReader.ReadLine()
+            tempRecords += streamReader.ReadLine()
         Loop
 
         fileSteamRead.Flush()
         streamReader.Close()
         fileSteamRead.Close()
 
-        users = tempUsers.Split("#")
-        Array.Resize(users, users.Length - 1)
+        records = tempRecords.Split("#")
+        Array.Resize(records, records.Length - 1)
 
-        Dim newUsersTemp As String = ""
-        Dim changedUser As String = ""
+        Dim newRecordsTemp As String = ""
+        Dim changedRecord As String = ""
 
-        For i = 0 To users.Length - 1
-            Dim usersSplit() As String = users(i).Split(",")
-            If usersSplit(arrayVal) <> current Or usersSplit(2) <> username Then
-                newUsersTemp += users(i) & "#"
-            ElseIf usersSplit(arrayVal) = current And usersSplit(2) = username Then
-                changedUser = users(i)
+        For i = 0 To records.Length - 1
+            Dim usersSplit() As String = records(i).Split(",")
+            If usersSplit(arrayVal) <> currentValue Or usersSplit(keyVal) <> key Then
+                newRecordsTemp += records(i) & "#"
+            ElseIf usersSplit(arrayVal) = currentValue And usersSplit(keyVal) = key Then
+                changedRecord = records(i)
             End If
         Next
 
-        Dim changedUserArray() As String = changedUser.Split(",")
-        Dim newChangedUser As String = ""
+        Dim changedRecordArray() As String = changedRecord.Split(",")
+        Dim newChangedRecord As String = ""
 
-        For i = 0 To changedUserArray.Length - 1
+        For i = 0 To changedRecordArray.Length - 1
             If i <> arrayVal Then
-                newChangedUser += changedUserArray(i) & ","
+                newChangedRecord += changedRecordArray(i) & ","
             ElseIf i = arrayVal Then
-                newChangedUser += edit & ","
+                newChangedRecord += newValue & ","
             End If
         Next
 
-        newChangedUser = newChangedUser.Substring(0, newChangedUser.Length - 1)
+        newChangedRecord = newChangedRecord.Substring(0, newChangedRecord.Length - 1)
         Dim fileStreamWrite As FileStream = New FileStream(fileUrl, FileMode.Truncate, FileAccess.Write)
         Dim writerStream As StreamWriter = New StreamWriter(fileStreamWrite)
 
-        Dim newUsers() As String = newUsersTemp.Split("#")
-        Array.Resize(newUsers, newUsers.Length - 1)
+        Dim newRecords() As String = newRecordsTemp.Split("#")
+        Array.Resize(newRecords, newRecords.Length - 1)
 
-        For i = 0 To newUsers.Length - 1
-            writerStream.WriteLine(newUsers(i) & "#")
+        For i = 0 To newRecords.Length - 1
+            writerStream.WriteLine(newRecords(i) & "#")
         Next
-        writerStream.WriteLine(newChangedUser & "#")
+        writerStream.WriteLine(newChangedRecord & "#")
 
         fileStreamWrite.Flush()
         writerStream.Close()

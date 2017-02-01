@@ -89,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fileHandler.vb" />
+    <Compile Include="formCancelOrders.Designer.vb">
+      <DependentUpon>formCancelOrders.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formCancelOrders.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="formChangePassword.Designer.vb">
       <DependentUpon>formChangePassword.vb</DependentUpon>
     </Compile>
@@ -132,6 +138,12 @@
     <Compile Include="formSplash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="formStockCheck.Designer.vb">
+      <DependentUpon>formStockCheck.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formStockCheck.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="globalVariables.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -151,6 +163,9 @@
     <Compile Include="labelPositions.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="formCancelOrders.resx">
+      <DependentUpon>formCancelOrders.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formChangePassword.resx">
       <DependentUpon>formChangePassword.vb</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formSplash.resx">
       <DependentUpon>formSplash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formStockCheck.resx">
+      <DependentUpon>formStockCheck.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
