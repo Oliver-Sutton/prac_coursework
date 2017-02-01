@@ -33,7 +33,7 @@ Public Class formCreateOrder
             Do Until fileHandler.isUnique(orderID, orderFileUrl, 0)
                 orderID = createOrderID()
             Loop
-            saveOrder(orderID, itemNumber, itemAmount)
+            fileHandler.addRecord(orderFileUrl, orderID & "," & itemNumber & "," & itemAmount & "#")
             txtItemNumber.Clear()
             txtItemAmount.Clear()
             lblUserFeedback.Text = "Order ID = " & orderID
@@ -41,21 +41,6 @@ Public Class formCreateOrder
             lblUserFeedback.Visible = True
         End If
 
-
-    End Sub
-
-    Private Sub saveOrder(orderID As String, itemNumber As String, itemAmount As String)
-
-        Dim fileUrl As String = Application.StartupPath + "/files/orders.txt"
-
-        Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Append, FileAccess.Write)
-        Dim writerStream As StreamWriter = New StreamWriter(fileStream)
-
-        writerStream.WriteLine(orderID & "," & itemNumber & "," & itemAmount & "#")
-
-        writerStream.Flush()
-        writerStream.Close()
-        fileStream.Close()
 
     End Sub
 

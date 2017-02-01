@@ -220,4 +220,17 @@ Module fileHandler
         fileStreamBackup.Close()
 
     End Sub
+
+    Public Sub addRecord(fileUrl As String, record As String)
+
+        Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Append, FileAccess.Write)
+        Dim writerStream As StreamWriter = New StreamWriter(fileStream)
+
+        writerStream.WriteLine(record)
+
+        fileStream.Flush()
+        writerStream.Close()
+        fileStream.Close()
+
+    End Sub
 End Module

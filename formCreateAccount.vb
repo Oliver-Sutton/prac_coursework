@@ -23,33 +23,9 @@ Public Class formCreateAccount
         ElseIf validUsername = True Then
             lblUserFeedback.Text = "Account created"
             labelPositions.center(lblUserFeedback, panelCreateAccount)
-            saveNewAccount(firstname, lastname, username, password)
+            fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",false#")
             formHome.Show()
             Me.Close()
         End If
     End Sub
-
-    ''' <summary>
-    '''     Inputs newAccount data into the login file when called.
-    ''' </summary>
-    ''' file format Firstname, Lastname, username, password, isAdmin (bool)
-    ''' <param name="firstname"></param>
-    ''' <param name="lastname"></param>
-    ''' <param name="username"></param>
-    ''' <param name="password"></param>
-    Private Sub saveNewAccount(firstname As String, lastname As String, username As String, password As String)
-
-        Dim loginUrl As String = Application.StartupPath + "/files/login.txt"
-        Dim fileStream As FileStream = New FileStream(loginUrl, FileMode.Append, FileAccess.Write)
-        Dim fileWriter As StreamWriter = New StreamWriter(fileStream)
-
-        fileWriter.WriteLine(firstname & "," & lastname & "," & username & "," & password & ",false#")
-
-        fileWriter.Flush()
-        fileWriter.Close()
-        fileStream.Close()
-
-    End Sub
-
-
 End Class
