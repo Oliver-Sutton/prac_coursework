@@ -65,13 +65,10 @@
     Private Sub fillOrderList()
         listOrders.Items.Clear()
         Dim orderUrl As String = Application.StartupPath + "/files/orders.txt"
-        Dim orders As String = fileHandler.readFile(orderUrl)
+        Dim orders() As String = fileHandler.readFile(orderUrl)
 
-        Dim ordersSplit() As String = orders.Split("#")
-        Array.Resize(ordersSplit, ordersSplit.Length - 1)
-
-        For i = 0 To ordersSplit.Length - 1
-            Dim order() As String = ordersSplit(i).Split(",")
+        For i = 0 To orders.Length - 1
+            Dim order() As String = orders(i).Split(",")
             listOrders.Items.Add(New ListViewItem({order(0), order(1), order(2)}))
         Next
     End Sub

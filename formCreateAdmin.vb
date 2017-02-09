@@ -25,7 +25,7 @@ Public Class formCreateAdmin
         Dim passwordAgain = txtPasswordAgain.Text
 
         If firstname.Length <> 0 And lastname.Length <> 0 And username.Length <> 0 And password = passwordAgain Then
-            fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",true#")
+            fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",true")
             formHome.Show()
             Me.Close()
         Else

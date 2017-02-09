@@ -23,7 +23,7 @@ Public Class formCreateAccount
         ElseIf validUsername = True Then
             lblUserFeedback.Text = "Account created"
             labelPositions.center(lblUserFeedback, panelCreateAccount)
-            fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",false#")
+            fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",false")
             formHome.Show()
             Me.Close()
         End If

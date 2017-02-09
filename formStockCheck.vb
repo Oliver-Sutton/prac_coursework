@@ -23,7 +23,7 @@
             Exit Sub
         End If
 
-        Dim products() As String = fileHandler.readFile(productsUrl).Split("#")
+        Dim products() As String = fileHandler.readFile(productsUrl)
         Array.Resize(products, products.Length - 1)
 
         For i = 0 To products.Length - 1

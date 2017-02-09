@@ -29,7 +29,7 @@
     Private Sub fillListAccounts()
 
         Dim loginUrl As String = Application.StartupPath + "/files/login.txt"
-        Dim users() As String = fileHandler.readFile(loginUrl).Split("#")
+        Dim users() As String = fileHandler.readFile(loginUrl)
 
         Array.Resize(users, users.Length - 1)
 

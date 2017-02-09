@@ -14,11 +14,8 @@ Public Class formLogin
 
         Dim loginUrl As String = Application.StartupPath + "/files/login.txt"
 
-        Dim tempUsers As String = fileHandler.readFile(loginUrl)
+        Dim users() As String = fileHandler.readFile(loginUrl)
 
-        Dim users = tempUsers.Split("#")
-
-        Array.Resize(users, users.Length - 1)
         '' file format Firstname, Lastname, username, password, isAdmin (bool)
 
         For i = 0 To users.Length - 1
