@@ -80,7 +80,7 @@ Module fileHandler
     ''' </summary>
     ''' <param name="search"></param>
     ''' <returns>If username is unique returns true else false</returns>
-    Public Function isUnique(ByVal search As String, ByVal fileUrl As String, ByVal arrayVal As Integer) As Boolean
+    Public Function isUnique(ByVal fileUrl As String, ByVal search As String, ByVal arrayVal As Integer) As Boolean
 
         ' gets all of the items in a file by caling readFile() above it.
         Dim items() As String = readFile(fileUrl)

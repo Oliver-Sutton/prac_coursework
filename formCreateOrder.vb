@@ -29,8 +29,8 @@ Public Class formCreateOrder
             lblUserFeedback.Visible = False
         End If
 
-        If fileHandler.isUnique(orderID, orderFileUrl, 0) Then
-            Do Until fileHandler.isUnique(orderID, orderFileUrl, 0)
+        If fileHandler.isUnique(orderFileUrl, orderID, 0) Then
+            Do Until fileHandler.isUnique(orderFileUrl, orderID, 0)
                 orderID = createOrderID()
             Loop
             fileHandler.addRecord(orderFileUrl, orderID & "," & itemNumber & "," & itemAmount)
