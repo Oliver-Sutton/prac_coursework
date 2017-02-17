@@ -1,5 +1,4 @@
-﻿Imports System.IO
-Public Class formCreateOrder
+﻿Public Class formCreateOrder
     Private Sub formCreateOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         panelCreateOrder.Left = (Me.Width / 2) - (panelCreateOrder.Width / 2)
