@@ -18,7 +18,7 @@
 
         If itemID.Length <> 9 Then
             lblUserFeedback.Text = "Please enter a valid product number"
-            labelPositions.center(lblUserFeedback, panelStockCheck)
+            positioning.lblCenter(lblUserFeedback, panelStockCheck, 0)
             lblUserFeedback.Visible = True
             Exit Sub
         End If
@@ -38,7 +38,7 @@
         Next
 
         lblUserFeedback.Text = "Product not found"
-        labelPositions.center(lblUserFeedback, panelStockCheck)
+        positioning.lblCenter(lblUserFeedback, panelStockCheck, 0)
         lblUserFeedback.Visible = True
 
     End Sub

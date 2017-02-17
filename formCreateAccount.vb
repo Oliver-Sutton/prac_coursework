@@ -19,10 +19,10 @@ Public Class formCreateAccount
 
         If validUsername = False Then
             lblUserFeedback.Text = "Please enter a different username"
-            labelPositions.center(lblUserFeedback, panelCreateAccount)
+            positioning.lblCenter(lblUserFeedback, panelCreateAccount, 0)
         ElseIf validUsername = True Then
             lblUserFeedback.Text = "Account created"
-            labelPositions.center(lblUserFeedback, panelCreateAccount)
+            positioning.lblCenter(lblUserFeedback, panelCreateAccount, 0)
             fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",false")
             formHome.Show()
             Me.Close()

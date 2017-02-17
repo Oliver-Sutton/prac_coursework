@@ -38,7 +38,7 @@ Public Class formLogin
             lblUserFeedback.Text = "Account not found"
         End If
 
-        labelPositions.center(lblUserFeedback, panelLogin)
+        positioning.lblCenter(lblUserFeedback, panelLogin, 0)
 
     End Sub
 End Class

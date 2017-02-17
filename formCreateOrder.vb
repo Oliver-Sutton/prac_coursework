@@ -4,7 +4,7 @@
         panelCreateOrder.Left = (Me.Width / 2) - (panelCreateOrder.Width / 2)
         panelCreateOrder.Top = (Me.Height / 2) - (panelCreateOrder.Height / 2)
 
-        labelPositions.center(lblCreateOrder, panelCreateOrder)
+        positioning.lblCenter(lblCreateOrder, panelCreateOrder, 0)
     End Sub
 
     Private Sub btnPlaceOrder_Click(sender As Object, e As EventArgs) Handles btnPlaceOrder.Click
@@ -18,11 +18,11 @@
 
         If itemNumber.Length <> 9 Then
             lblUserFeedback.Text = "Please enter a valid item number"
-            labelPositions.center(lblUserFeedback, panelCreateOrder)
+            positioning.lblCenter(lblUserFeedback, panelCreateOrder, 0)
             lblUserFeedback.Visible = True
         ElseIf itemAmount.Length = 0 Or itemAmount = "0" Or Not IsNumeric(itemAmount) Then
             lblUserFeedback.Text = "Please enter a valid item quantity"
-            labelPositions.center(lblUserFeedback, panelCreateOrder)
+            positioning.lblCenter(lblUserFeedback, panelCreateOrder, 0)
             lblUserFeedback.Visible = True
         Else
             lblUserFeedback.Visible = False
@@ -36,7 +36,7 @@
             txtProductID.Clear()
             txtItemAmount.Clear()
             lblUserFeedback.Text = "Order ID = " & orderID
-            labelPositions.center(lblUserFeedback, panelCreateOrder)
+            positioning.lblCenter(lblUserFeedback, panelCreateOrder, 0)
             lblUserFeedback.Visible = True
         End If
 

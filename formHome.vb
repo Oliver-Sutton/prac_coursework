@@ -3,10 +3,10 @@
 
         If globalVariables.isAdmin = True Then
             panelAdmin.Visible = True
-            labelPositions.center(lblAdminPanel, panelAdmin)
+            positioning.lblCenter(lblAdminPanel, panelAdmin, 0)
         End If
-        labelPositions.center(lblUserPanel, panelUser)
-        labelPositions.center(lblUserSettings, panelUserSettings)
+        positioning.lblCenter(lblUserPanel, panelUser, 0)
+        positioning.lblCenter(lblUserSettings, panelUserSettings, 0)
 
         panelNav.Left = Me.Width - (panelNav.Width + 20)
 

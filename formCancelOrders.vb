@@ -3,7 +3,7 @@
         panelCancelOrders.Left = (Me.Width / 2) - (panelCancelOrders.Width / 2)
         panelCancelOrders.Top = (Me.Height / 2) - (panelCancelOrders.Height / 2)
 
-        labelPositions.center(lblCancelOrder, panelCancelOrders)
+        positioning.lblCenter(lblCancelOrder, panelCancelOrders, 0)
 
         Dim orderID, productID, amount As ColumnHeader
         orderID = New ColumnHeader
