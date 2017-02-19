@@ -169,6 +169,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="labelPositions.vb" />
+    <Compile Include="security.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="formCancelOrders.resx">

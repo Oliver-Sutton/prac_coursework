@@ -25,19 +25,31 @@ Public Class formCreateAdmin
         Dim passwordAgain = txtPasswordAgain.Text
 
         If firstname.Length <> 0 And lastname.Length <> 0 And username.Length <> 0 And password = passwordAgain Then
-            fileHandler.addRecord(loginUrl, firstname & "," & lastname & "," & username & "," & password & ",true")
-            formHome.Show()
+
+            Dim encryptKey As Char = username.Substring(0, 1)
+
+            Dim encFirstname As String = security.encrypt(firstname, encryptKey)
+            Dim encLastname As String = security.encrypt(lastname, encryptKey)
+            Dim encUsername As String = security.encrypt(username, encryptKey)
+
+            Dim salt As String = security.generateSalt(15)
+            Dim hashedPassword As String = security.hash(password, salt)
+
+            Console.WriteLine(hashedPassword)
+
+            fileHandler.addRecord(loginUrl, encFirstname & "," & encLastname & "," & encUsername & "," & hashedPassword & "," & salt & ",true")
+            formLogin.Show()
             Me.Close()
         Else
             If firstname.Length = 0 Or lastname.Length = 0 Then
                 lblUserFeedback.Text = "Please enter a first and last name"
-                positioning.lblCenter(lblUserFeedback, panelCreateAccount, 0)
+                positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
             ElseIf username.Length <= 0 Then
                 lblUserFeedback.Text = "Please enter a valid username."
-                positioning.lblCenter(lblUserFeedback, panelCreateAccount, 0)
+                positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
             ElseIf password <> passwordAgain Then
                 lblUserFeedback.Text = "Please make sure your passwords match"
-                positioning.lblCenter(lblUserFeedback, panelCreateAccount, 0)
+                positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
             End If
         End If
     End Sub
