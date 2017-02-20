@@ -32,7 +32,7 @@
             Do Until fileHandler.isUnique(orderFileUrl, orderID, 0)
                 orderID = createOrderID()
             Loop
-            fileHandler.addRecord(orderFileUrl, orderID & "," & itemNumber & "," & itemAmount)
+            'fileHandler.addRecord(orderFileUrl, orderID & "," & itemNumber & "," & itemAmount)
             txtProductID.Clear()
             txtItemAmount.Clear()
             lblUserFeedback.Text = "Order ID = " & orderID

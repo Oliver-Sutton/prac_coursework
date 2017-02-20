@@ -33,7 +33,7 @@ Public Class formCreateAccount
 
             lblUserFeedback.Text = "Account created"
             positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
-            fileHandler.addRecord(loginUrl, encFirstname & "," & encLastname & "," & encUsername & "," & hashedPassword & "," & salt & ",false")
+            'fileHandler.addRecord(loginUrl, encFirstname & "," & encLastname & "," & encUsername & "," & hashedPassword & "," & salt & ",false")
             formHome.Show()
             Me.Close()
         End If

@@ -31,13 +31,14 @@ Public Class formCreateAdmin
             Dim encFirstname As String = security.encrypt(firstname, encryptKey)
             Dim encLastname As String = security.encrypt(lastname, encryptKey)
             Dim encUsername As String = security.encrypt(username, encryptKey)
+            Dim encPermissions As String = security.encrypt("true", encryptKey)
 
             Dim salt As String = security.generateSalt(15)
             Dim hashedPassword As String = security.hash(password, salt)
 
-            Console.WriteLine(hashedPassword)
+            Dim records As String() = {encFirstname, encLastname, encUsername, hashedPassword, salt, encPermissions}
 
-            fileHandler.addRecord(loginUrl, encFirstname & "," & encLastname & "," & encUsername & "," & hashedPassword & "," & salt & ",true")
+            fileHandler.addRecord(loginUrl, records)
             formLogin.Show()
             Me.Close()
         Else

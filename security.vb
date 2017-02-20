@@ -17,6 +17,7 @@ Module security
         For i = 0 To charString.Length - 1 ' loops through all of the characters in the data.
             Dim intChar As Integer = Convert.ToInt32(charString(i)) ' turns the single character into a integer to be shifted.
             intChar += intKey ' shifts the character by the key.
+            encryptedString += Convert.ToChar(intChar)
         Next
 
         Return encryptedString
@@ -36,6 +37,7 @@ Module security
         For i = 0 To charString.Length - 1 ' loops through all of the characters in the data.
             Dim intChar As Integer = Convert.ToInt32(charString(i)) ' turns the single character into a integer to be shifted.
             intChar -= intKey ' shifts the character down by the key.
+            decryptedString += Convert.ToChar(intChar)
         Next
 
         Return decryptedString

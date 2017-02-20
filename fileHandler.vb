@@ -286,14 +286,23 @@ Module fileHandler
     ''' </summary>
     ''' <param name="fileUrl">Url of the file you want to add the record to</param>
     ''' <param name="record">The complete string of the record you want to add.</param>
-    Public Sub addRecord(ByVal fileUrl As String, ByVal record As String)
+    Public Sub addRecord(ByVal fileUrl As String, ByVal record As String())
 
         ' opens filestream to write to the file.
         Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Append, FileAccess.Write)
         Dim writerStream As StreamWriter = New StreamWriter(fileStream)
 
+        Dim recordString As String = ""
+
+        ' generates the recordString 
+        For i = 0 To record.Length - 1
+            recordString += record(i) + ","
+        Next
+
+        recordString = recordString.Substring(0, recordString.Length - 1)
+
         ' writes the record passed through the sub.
-        writerStream.WriteLine(record)
+        writerStream.WriteLine(recordString)
 
         ' closes and flushes the files streams.
         fileStream.Flush()
