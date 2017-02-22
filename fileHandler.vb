@@ -310,4 +310,45 @@ Module fileHandler
         fileStream.Close()
 
     End Sub
+    ''' <summary>
+    '''     This function returns a integer primary key as a string to be used in a file.
+    ''' </summary>
+    ''' <param name="fileUrl">The url of the file that you want to find the new primary key in.</param>
+    ''' <param name="arrayVal">The place in the file that the primary key is.</param>
+    ''' <returns></returns>
+    Public Function generatePrimaryKey(ByVal fileUrl As String, ByVal arrayVal As Integer) As String
+        Dim primaryKey As String = ""
+
+        If Not File.Exists(fileUrl) Then
+            Return "0"
+        End If
+
+        Dim fileStream As FileStream = New FileStream(fileUrl, FileMode.Open, FileAccess.Read)
+        Dim readerStream As StreamReader = New StreamReader(fileStream)
+
+        Dim records(0) As String
+
+        Do
+            records(records.Length - 1) = readerStream.ReadLine()
+            Array.Resize(records, records.Length + 1)
+        Loop Until readerStream.Peek = -1
+
+        Array.Resize(records, records.Length - 1)
+
+        fileStream.Flush()
+        readerStream.Close()
+        fileStream.Close()
+
+        Dim lastRecordSplit() As String = records(records.Length - 1).Split(",")
+
+        Dim strLastPrimaryKey As String = lastRecordSplit(arrayVal)
+
+        Try
+            Dim intLastPrimaryKey As Integer = CInt(strLastPrimaryKey)
+            primaryKey = (intLastPrimaryKey + 1).ToString
+        Catch e As Exception
+            Return "Primary Key is not an integer!"
+        End Try
+        Return primaryKey
+    End Function
 End Module

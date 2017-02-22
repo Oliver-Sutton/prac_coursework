@@ -27,13 +27,18 @@ Public Class formCreateAccount
             Dim encFirstname As String = security.encrypt(firstname, encryptKey)
             Dim encLastname As String = security.encrypt(lastname, encryptKey)
             Dim encUsername As String = security.encrypt(username, encryptKey)
+            Dim encPermissions As String = security.encrypt("false", encryptKey)
+
+            Dim primaryKey As String = fileHandler.generatePrimaryKey(loginUrl, 0)
 
             Dim salt As String = security.generateSalt(15)
             Dim hashedPassword As String = security.hash(password, salt)
 
+            Dim records As String() = {primaryKey, encFirstname, encLastname, encUsername, hashedPassword, salt, encPermissions}
+
             lblUserFeedback.Text = "Account created"
             positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
-            'fileHandler.addRecord(loginUrl, encFirstname & "," & encLastname & "," & encUsername & "," & hashedPassword & "," & salt & ",false")
+            fileHandler.addRecord(loginUrl, records)
             formHome.Show()
             Me.Close()
         End If

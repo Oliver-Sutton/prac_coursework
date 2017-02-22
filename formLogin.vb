@@ -16,7 +16,7 @@ Public Class formLogin
 
         Dim users() As String = fileHandler.readFile(loginUrl)
 
-        '' file format Firstname, Lastname, username, password, salt, isAdmin (bool)
+        '' file format Primary Key, Firstname, Lastname, username, password, salt, isAdmin (bool)
 
 
 
@@ -25,11 +25,11 @@ Public Class formLogin
             userInfo = users(i).Split(",")
 
             Dim decryptKey As String = username.Substring(0, 1)
-            Dim hashedPassword As String = security.hash(password, userInfo(4))
-            Dim decryptedUsername As String = security.decrypt(userInfo(2), decryptKey)
-            Dim decryptedPermissions As String = security.decrypt(userInfo(5), decryptKey)
+            Dim hashedPassword As String = security.hash(password, userInfo(5))
+            Dim decryptedUsername As String = security.decrypt(userInfo(3), decryptKey)
+            Dim decryptedPermissions As String = security.decrypt(userInfo(6), decryptKey)
 
-            If decryptedUsername = username And hashedPassword = userInfo(3) Then
+            If decryptedUsername = username And hashedPassword = userInfo(4) Then
                 lblUserFeedback.Text = "Logged in"
                 lblUserFeedback.Visible = True
                 loggedIn = True

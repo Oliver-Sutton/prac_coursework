@@ -33,10 +33,12 @@ Public Class formCreateAdmin
             Dim encUsername As String = security.encrypt(username, encryptKey)
             Dim encPermissions As String = security.encrypt("true", encryptKey)
 
+            Dim primaryKey As String = fileHandler.generatePrimaryKey(loginUrl, 0)
+
             Dim salt As String = security.generateSalt(15)
             Dim hashedPassword As String = security.hash(password, salt)
 
-            Dim records As String() = {encFirstname, encLastname, encUsername, hashedPassword, salt, encPermissions}
+            Dim records As String() = {primaryKey, encFirstname, encLastname, encUsername, hashedPassword, salt, encPermissions}
 
             fileHandler.addRecord(loginUrl, records)
             formLogin.Show()
