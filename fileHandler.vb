@@ -317,7 +317,6 @@ Module fileHandler
     ''' <param name="arrayVal">The place in the file that the primary key is.</param>
     ''' <returns></returns>
     Public Function generatePrimaryKey(ByVal fileUrl As String, ByVal arrayVal As Integer) As String
-        Dim primaryKey As String = ""
 
         If Not File.Exists(fileUrl) Then
             Return "0"
@@ -339,16 +338,19 @@ Module fileHandler
         readerStream.Close()
         fileStream.Close()
 
-        Dim lastRecordSplit() As String = records(records.Length - 1).Split(",")
+        Dim maxPrimaryKey As Integer = 0
 
-        Dim strLastPrimaryKey As String = lastRecordSplit(arrayVal)
+        For i = 0 To records.Length - 1
+            Dim recordSplit() As String = records(i).Split(",")
+            Try
+                If CInt(recordSplit(arrayVal)) >= maxPrimaryKey Then
+                    maxPrimaryKey = CInt(recordSplit(arrayVal)) + 1
+                End If
+            Catch e As Exception
+                Return "Your primary key(s) are not integers!"
+            End Try
+        Next
 
-        Try
-            Dim intLastPrimaryKey As Integer = CInt(strLastPrimaryKey)
-            primaryKey = (intLastPrimaryKey + 1).ToString
-        Catch e As Exception
-            Return "Primary Key is not an integer!"
-        End Try
-        Return primaryKey
+        Return maxPrimaryKey.ToString
     End Function
 End Module

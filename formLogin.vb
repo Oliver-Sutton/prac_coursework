@@ -29,6 +29,7 @@ Public Class formLogin
             Dim decryptedUsername As String = security.decrypt(userInfo(3), decryptKey)
             Dim decryptedPermissions As String = security.decrypt(userInfo(6), decryptKey)
 
+
             If decryptedUsername = username And hashedPassword = userInfo(4) Then
                 lblUserFeedback.Text = "Logged in"
                 lblUserFeedback.Visible = True
