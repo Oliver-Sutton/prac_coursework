@@ -9,7 +9,7 @@ Module security
     ''' <param name="data">The data that you want to encrypt.</param>
     ''' <param name="key">The key you want to encrypt the data by.</param>
     ''' <returns>Returns the encrypted string that has been encrypted.</returns>
-    Public Function encryptKey(ByVal data As String, ByVal key As Char) As String
+    Public Function encrypt(ByVal data As String, ByVal key As Char) As String
         Dim intKey As Integer = Convert.ToInt32(key) ' turns the key into a integer value.
 
         Dim charString As Char() = data.ToCharArray() 'puts the data string into a char array.
@@ -48,7 +48,7 @@ Module security
     ''' <param name="data">The encrypted that you want to decrypt.</param>
     ''' <param name="key">The key that the data was encrypted by.</param>
     ''' <returns>Returns the decrypted string that has been decrypted.</returns>
-    Public Function decryptKey(ByVal data As String, ByVal key As Char) As String
+    Public Function decrypt(ByVal data As String, ByVal key As Char) As String
         Dim intKey As Integer = Convert.ToInt32(key) ' turns the key into a integer value.
 
         Dim charString As Char() = data.ToCharArray() 'puts the data string into a char array.
