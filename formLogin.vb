@@ -26,8 +26,8 @@ Public Class formLogin
 
             Dim decryptKey As String = username.Substring(0, 1)
             Dim hashedPassword As String = security.hash(password, userInfo(5))
-            Dim decryptedUsername As String = security.decrypt(userInfo(3), decryptKey)
-            Dim decryptedPermissions As String = security.decrypt(userInfo(6), decryptKey)
+            Dim decryptedUsername As String = security.decryptKey(userInfo(3), decryptKey)
+            Dim decryptedPermissions As String = security.decryptKey(userInfo(6), decryptKey)
 
 
             If decryptedUsername = username And hashedPassword = userInfo(4) Then

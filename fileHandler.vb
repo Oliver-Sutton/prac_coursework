@@ -310,6 +310,7 @@ Module fileHandler
         fileStream.Close()
 
     End Sub
+
     ''' <summary>
     '''     This function returns a integer primary key as a string to be used in a file.
     ''' </summary>

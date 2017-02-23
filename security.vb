@@ -9,7 +9,7 @@ Module security
     ''' <param name="data">The data that you want to encrypt.</param>
     ''' <param name="key">The key you want to encrypt the data by.</param>
     ''' <returns>Returns the encrypted string that has been encrypted.</returns>
-    Public Function encrypt(ByVal data As String, ByVal key As Char) As String
+    Public Function encryptKey(ByVal data As String, ByVal key As Char) As String
         Dim intKey As Integer = Convert.ToInt32(key) ' turns the key into a integer value.
 
         Dim charString As Char() = data.ToCharArray() 'puts the data string into a char array.
@@ -24,12 +24,31 @@ Module security
     End Function
 
     ''' <summary>
+    '''     This function encrypts data using a shift beased on value of the key you input. USING A SET VALUE
+    ''' </summary>
+    ''' <param name="data">The data that you want to encrypt.</param>
+    ''' <returns>Returns the encrypted string that has been encrypted.</returns>
+    Public Function encrypt(ByVal data As String) As String
+        Dim intKey As Integer = 88
+
+        Dim charString As Char() = data.ToCharArray()
+        Dim encryptedString As String = ""
+
+        For i = 0 To charString.Length - 1
+            Dim intChar As Integer = Convert.ToInt32(charString(i))
+            intChar += intKey
+            encryptedString += Convert.ToChar(intChar)
+        Next
+
+        Return encryptedString
+    End Function
+    ''' <summary>
     '''     This function decrypts data using the opposite shift that the encrypt uses.
     ''' </summary>
     ''' <param name="data">The encrypted that you want to decrypt.</param>
     ''' <param name="key">The key that the data was encrypted by.</param>
     ''' <returns>Returns the decrypted string that has been decrypted.</returns>
-    Public Function decrypt(ByVal data As String, ByVal key As Char) As String
+    Public Function decryptKey(ByVal data As String, ByVal key As Char) As String
         Dim intKey As Integer = Convert.ToInt32(key) ' turns the key into a integer value.
 
         Dim charString As Char() = data.ToCharArray() 'puts the data string into a char array.
@@ -37,6 +56,25 @@ Module security
         For i = 0 To charString.Length - 1 ' loops through all of the characters in the data.
             Dim intChar As Integer = Convert.ToInt32(charString(i)) ' turns the single character into a integer to be shifted.
             intChar -= intKey ' shifts the character down by the key.
+            decryptedString += Convert.ToChar(intChar)
+        Next
+
+        Return decryptedString
+    End Function
+
+    ''' <summary>
+    '''     This function decrypts data using the opposite shift that the encrypt uses. USING A SET VALUE
+    ''' </summary>
+    ''' <param name="data">The encrypted that you want to decrypt.</param>
+    ''' <returns>Returns the decrypted string that has been decrypted.</returns>
+    Public Function decrypt(ByVal data As String) As String
+        Dim intKey As Integer = 88
+
+        Dim charString As Char() = data.ToCharArray()
+        Dim decryptedString As String = ""
+        For i = 0 To charString.Length - 1
+            Dim intChar As Integer = Convert.ToInt32(charString(i))
+            intChar -= intKey
             decryptedString += Convert.ToChar(intChar)
         Next
 

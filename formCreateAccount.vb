@@ -24,10 +24,10 @@ Public Class formCreateAccount
 
             Dim encryptKey As Char = username.Substring(0, 1)
 
-            Dim encFirstname As String = security.encrypt(firstname, encryptKey)
-            Dim encLastname As String = security.encrypt(lastname, encryptKey)
-            Dim encUsername As String = security.encrypt(username, encryptKey)
-            Dim encPermissions As String = security.encrypt("false", encryptKey)
+            Dim encFirstname As String = security.encryptKey(firstname, encryptKey)
+            Dim encLastname As String = security.encryptKey(lastname, encryptKey)
+            Dim encUsername As String = security.encryptKey(username, encryptKey)
+            Dim encPermissions As String = security.encryptKey("false", encryptKey)
 
             Dim primaryKey As String = fileHandler.generatePrimaryKey(loginUrl, 0)
 
