@@ -11,7 +11,7 @@ I recommend using salt for both hashing and also using part of that salt as a ke
 With this do not encrypt salt unless using a standard number using encrypt/decrypt without key.
 Doing this will allow you to decrypt data from an entire file without need to the key.  
 Example(s):  
-1. Products in a file.
+1. Products in a file.  
 2. Entire user files for admins. (Using part of the salt instead of set shift number)
 
 ###Features
