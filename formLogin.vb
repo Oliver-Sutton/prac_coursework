@@ -49,7 +49,7 @@ Public Class formLogin
             lblUserFeedback.Visible = True
         End If
 
-        positioning.labelPanel(lblUserFeedback, panelLogin, 0, -1)
+        positioning.labelPanelHorizontalCenter(lblUserFeedback, panelLogin)
 
     End Sub
 End Class

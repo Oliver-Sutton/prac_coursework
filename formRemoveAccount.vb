@@ -4,7 +4,7 @@
         panelRemoveAccount.Left = (Me.Width / 2) - (panelRemoveAccount.Width / 2)
         panelRemoveAccount.Top = (Me.Height / 2) - (panelRemoveAccount.Height / 2)
 
-        positioning.labelPanel(lblRemoveAccount, panelRemoveAccount, 0, -1)
+        positioning.labelPanelHorizontalCenter(lblRemoveAccount, panelRemoveAccount)
 
         Dim firstname, lastname, username As ColumnHeader
         firstname = New ColumnHeader

@@ -46,13 +46,13 @@ Public Class formCreateAdmin
         Else
             If firstname.Length = 0 Or lastname.Length = 0 Then
                 lblUserFeedback.Text = "Please enter a first and last name"
-                positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
+                positioning.labelPanelHorizontalCenter(lblUserFeedback, panelCreateAccount)
             ElseIf username.Length <= 0 Then
                 lblUserFeedback.Text = "Please enter a valid username."
-                positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
+                positioning.labelPanelHorizontalCenter(lblUserFeedback, panelCreateAccount)
             ElseIf password <> passwordAgain Then
                 lblUserFeedback.Text = "Please make sure your passwords match"
-                positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
+                positioning.labelPanelHorizontalCenter(lblUserFeedback, panelCreateAccount)
             End If
         End If
     End Sub

@@ -19,7 +19,7 @@ Public Class formCreateAccount
 
         If validUsername = False Then
             lblUserFeedback.Text = "Please enter a different username"
-            positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
+            positioning.labelPanelHorizontalCenter(lblUserFeedback, panelCreateAccount)
         ElseIf validUsername = True Then
 
             Dim encryptKey As Char = username.Substring(0, 1)
@@ -37,7 +37,7 @@ Public Class formCreateAccount
             Dim records As String() = {primaryKey, encFirstname, encLastname, encUsername, hashedPassword, salt, encPermissions}
 
             lblUserFeedback.Text = "Account created"
-            positioning.labelPanel(lblUserFeedback, panelCreateAccount, 0, -1)
+            positioning.labelPanelHorizontalCenter(lblUserFeedback, panelCreateAccount)
             fileHandler.addRecord(loginUrl, records)
             formHome.Show()
             Me.Close()
